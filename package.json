@@ -3,10 +3,10 @@
 	"private": true,
 	"type": "module",
 	"scripts": {
+		"build": "$(which -a bun | grep -v node_modules | head -n 1) scripts/build.ts",
 		"check": "tsc --noEmit",
 		"dev": "$(which -a bun | grep -v node_modules | head -n 1) src/server.ts --watch",
-		"lint": "bun run oxlint",
-		"oxlint": "oxlint src scripts --ignore-pattern='*.gen.ts'"
+		"lint": "oxlint src scripts --ignore-pattern='*.gen.ts'"
 	},
 	"dependencies": {
 		"@hookform/resolvers": "^5.2.2",
