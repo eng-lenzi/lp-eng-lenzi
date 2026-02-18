@@ -1,0 +1,49 @@
+{
+	"name": "lp-eng-lenzi",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"check": "tsc --noEmit",
+		"dev": "$(which -a bun | grep -v node_modules | head -n 1) src/server.ts --watch",
+		"lint": "bun run oxlint",
+		"oxlint": "oxlint src scripts --ignore-pattern='*.gen.ts'"
+	},
+	"dependencies": {
+		"@hookform/resolvers": "^5.2.2",
+		"@radix-ui/react-dialog": "^1.1.15",
+		"@radix-ui/react-label": "^2.1.8",
+		"@radix-ui/react-slot": "^1.2.4",
+		"@tanstack/react-query": "^5.90.20",
+		"@tanstack/react-router": "^1.157.10",
+		"clsx": "^2.1.1",
+		"dayjs": "^1.11.19",
+		"dotenv": "^17.2.3",
+		"lucide-react": "^0.563.0",
+		"react": "^19.2.3",
+		"react-dom": "^19.2.3",
+		"react-hook-form": "^7.71.1",
+		"sonner": "^2.0.7",
+		"tailwind-merge": "^3.4.0",
+		"tailwind-variants": "^3.2.2",
+		"tailwindcss": "^4.1.18",
+		"tw-animate-css": "^1.4.0",
+		"zod": "^4.3.6",
+		"zustand": "^5.0.10"
+	},
+	"devDependencies": {
+		"@tailwindcss/cli": "^4.1.18",
+		"@tanstack/router-cli": "^1.157.10",
+		"@types/bun": "^1.3.6",
+		"@types/node": "^25.0.10",
+		"@types/react": "^19.2.9",
+		"@types/react-dom": "^19.2.3",
+		"@typescript/native-preview": "^7.0.0-dev.20260124.1",
+		"bun-plugin-tailwind": "^0.1.2",
+		"concurrently": "^9.2.1",
+		"knip": "^5.82.1",
+		"lefthook": "^2.0.15",
+		"oxfmt": "^0.26.0",
+		"oxlint": "^1.41.0",
+		"typescript": "^5.9.3"
+	}
+}
