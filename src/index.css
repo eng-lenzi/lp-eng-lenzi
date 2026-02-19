@@ -4,75 +4,91 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --radius: 0.625rem;
+  --radius: 0.5rem;
 }
 
 .light {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
+  --background: oklch(0.985 0.004 240);
+  --foreground: oklch(0.22 0.02 250);
 
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
+  --card: oklch(0.995 0.002 240);
+  --card-foreground: oklch(0.22 0.02 250);
 
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
+  --popover: oklch(0.995 0.002 240);
+  --popover-foreground: oklch(0.22 0.02 250);
 
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
+  --select: oklch(0.965 0.01 245);
+  --select-foreground: oklch(0.26 0.02 248);
 
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
+  --primary: oklch(0.36 0.07 240);
+  --primary-foreground: oklch(0.98 0.005 240);
 
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
+  --secondary: oklch(0.92 0.012 240);
+  --secondary-foreground: oklch(0.3 0.02 244);
 
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.95 0.008 240);
+  --muted-foreground: oklch(0.5 0.015 245);
 
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.985 0 0);
+  --accent: oklch(0.78 0.09 85);
+  --accent-foreground: oklch(0.26 0.02 248);
 
-  --border: oklch(0.922 0 0);
+  --destructive: oklch(0.57 0.21 25);
+  --destructive-foreground: oklch(0.985 0.005 240);
 
-  --input: oklch(0.922 0 0);
+  --warning: oklch(0.82 0.14 82);
+  --warning-foreground: oklch(0.26 0.02 248);
 
-  --ring: oklch(0.708 0 0);
+  --success: oklch(0.72 0.13 155);
+  --success-foreground: oklch(0.26 0.02 248);
+
+  --border: oklch(0.86 0.01 245);
+  --input: oklch(0.86 0.01 245);
+  --ring: oklch(0.52 0.08 240);
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
+  --background: oklch(0.19 0.015 245);
+  --foreground: oklch(0.95 0.005 240);
 
-  --card: oklch(0.145 0 0);
-  --card-foreground: oklch(0.985 0 0);
+  --card: oklch(0.23 0.015 245);
+  --card-foreground: oklch(0.95 0.005 240);
 
-  --popover: oklch(0.145 0 0);
-  --popover-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.23 0.015 245);
+  --popover-foreground: oklch(0.95 0.005 240);
 
-  --primary: oklch(0.985 0 0);
-  --primary-foreground: oklch(0.205 0 0);
+  --select: oklch(0.27 0.02 245);
+  --select-foreground: oklch(0.93 0.005 240);
 
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.78 0.09 235);
+  --primary-foreground: oklch(0.2 0.02 245);
 
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
+  --secondary: oklch(0.31 0.02 245);
+  --secondary-foreground: oklch(0.93 0.005 240);
 
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.28 0.018 245);
+  --muted-foreground: oklch(0.74 0.01 242);
 
-  --destructive: oklch(0.396 0.141 25.723);
-  --destructive-foreground: oklch(0.985 0 0);
+  --accent: oklch(0.74 0.11 82);
+  --accent-foreground: oklch(0.23 0.015 245);
 
-  --border: oklch(0.269 0 0);
+  --destructive: oklch(0.64 0.2 27);
+  --destructive-foreground: oklch(0.96 0.005 240);
 
-  --input: oklch(0.269 0 0);
+  --warning: oklch(0.79 0.12 83);
+  --warning-foreground: oklch(0.23 0.015 245);
 
-  --ring: oklch(0.439 0 0);
+  --success: oklch(0.75 0.12 154);
+  --success-foreground: oklch(0.23 0.015 245);
+
+  --border: oklch(0.34 0.02 245);
+  --input: oklch(0.34 0.02 245);
+  --ring: oklch(0.66 0.09 235);
 }
 
 @theme inline {
-  --font-sans: "Geist", "Geist Fallback", system-ui, sans-serif;
+  --font-sans: "IBM Plex Sans", "Segoe UI", sans-serif;
+  --font-heading: "IBM Plex Serif", "Georgia", serif;
+  --font-mono: "IBM Plex Mono", "SFMono-Regular", monospace;
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -82,6 +98,9 @@
 
   --color-popover: var(--popover);
   --color-popover-foreground: var(--popover-foreground);
+
+  --color-select: var(--select);
+  --color-select-foreground: var(--select-foreground);
 
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
@@ -97,6 +116,12 @@
 
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
+
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
 
   --color-border: var(--border);
 

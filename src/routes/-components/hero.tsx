@@ -1,0 +1,220 @@
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
+import {
+	CheckCircle2,
+	ChevronRight,
+	Phone,
+	ShieldCheck,
+	Target,
+	Briefcase,
+	FileCheck2,
+	Landmark,
+	Zap,
+} from "lucide-react";
+
+import { Text, Title } from "@/components/typography";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import {
+	AnimatedSection,
+	AnimatedNumber,
+	FloatingElement,
+	GlowingOrb,
+	HeroParticles,
+} from "./animation-helpers";
+
+const stats = [
+	{ value: "35+", label: "Anos de experiência", suffix: "" },
+	{ value: "12", label: "Anos no CREA-SP", suffix: "" },
+	{ value: "1000+", label: "Perícias realizadas", suffix: "+" },
+	{ value: "98%", label: "Satisfação", suffix: "%" },
+] as const;
+
+export function Hero() {
+	const heroRef = useRef(null);
+	const isHeroInView = useInView(heroRef, { once: true });
+
+	return (
+		<section
+			ref={heroRef}
+			id="inicio"
+			className="relative py-16 sm:py-20 lg:py-32"
+		>
+			<HeroParticles />
+			<GlowingOrb className="left-[-10%] top-[20%] h-96 w-96" />
+			<GlowingOrb className="right-[-5%] bottom-[20%] h-64 w-64" color="blue" />
+
+			<div className="grid gap-12 lg:grid-cols-[1.15fr_1fr] lg:gap-16">
+				<div className="relative z-10 space-y-10">
+					<AnimatedSection delay={0.1}>
+						<Badge
+							variant="outline"
+							className="border-primary/30 bg-primary/5 px-4 py-1.5 text-primary"
+						>
+							<Zap className="mr-1.5 size-3.5" />
+							Perícia Judicial e Assistência Técnica
+						</Badge>
+					</AnimatedSection>
+
+					<AnimatedSection delay={0.2}>
+						<Title
+							size="xl"
+							className="font-heading text-4xl font-bold tracking-tight sm:text-5xl lg:text-[3.5rem] leading-[1.1]"
+						>
+							Engenharia mecânica aplicada à{" "}
+							<span className="bg-gradient-to-r from-primary via-primary/80 to-blue-500 bg-clip-text text-transparent">
+								prova técnica
+							</span>
+						</Title>
+					</AnimatedSection>
+
+					<AnimatedSection delay={0.3}>
+						<Text size="lg" tone="subtle" className="max-w-xl leading-relaxed">
+							<motion.span
+								initial={{ opacity: 0 }}
+								animate={{ opacity: 1 }}
+								transition={{ delay: 0.5 }}
+							>
+								35 anos de experiência em análise de falhas, acidentes e eventos
+								críticos. Atuação como Perito Judicial e Assistente Técnico com
+								foco em elevadores e caldeiras.
+							</motion.span>
+						</Text>
+					</AnimatedSection>
+
+					<AnimatedSection delay={0.4}>
+						<div className="flex flex-wrap gap-3">
+							<Button asChild size="lg" className="gap-2 shadow-lg shadow-primary/20">
+								<a href="tel:+5519997110785">
+									<Phone className="size-4" />
+									Falar por telefone
+								</a>
+							</Button>
+							<Button
+								asChild
+								variant="outline"
+								size="lg"
+								className="gap-2"
+							>
+								<a href="#contato">
+									Enviar mensagem
+									<ChevronRight className="size-4" />
+								</a>
+							</Button>
+						</div>
+					</AnimatedSection>
+
+					<AnimatedSection delay={0.5}>
+						<div className="flex flex-wrap gap-8 pt-4">
+							{stats.map((stat, idx) => (
+								<motion.div
+									key={stat.label}
+									initial={{ opacity: 0, y: 20 }}
+									animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
+									transition={{ delay: 0.6 + idx * 0.1 }}
+									className="space-y-1"
+								>
+									<Text className="text-4xl font-bold bg-gradient-to-br from-foreground to-foreground/70 bg-clip-text text-transparent">
+										<AnimatedNumber value={stat.value} suffix={stat.suffix} />
+									</Text>
+									<Text size="xs" tone="muted">
+										{stat.label}
+									</Text>
+								</motion.div>
+							))}
+						</div>
+					</AnimatedSection>
+				</div>
+
+				<div className="relative hidden lg:block">
+					<motion.div
+						initial={{ opacity: 0, scale: 0.9, rotate: -2 }}
+						animate={isHeroInView ? { opacity: 1, scale: 1, rotate: 0 } : {}}
+						transition={{ duration: 0.8, delay: 0.3 }}
+						className="relative"
+					>
+						<div className="absolute -inset-6 rounded-3xl bg-gradient-to-br from-primary/20 via-blue-500/10 to-transparent" />
+						<FloatingElement className="absolute -right-4 top-1/4">
+							<div className="rounded-xl bg-card p-3 shadow-xl">
+								<div className="flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-500/10">
+									<CheckCircle2 className="size-5 text-emerald-600" />
+								</div>
+							</div>
+						</FloatingElement>
+						<FloatingElement className="absolute -left-4 bottom-1/4" style={{ animationDelay: "1s" }}>
+							<div className="rounded-xl bg-card p-3 shadow-xl">
+								<div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-500/10">
+									<ShieldCheck className="size-5 text-blue-600" />
+								</div>
+							</div>
+						</FloatingElement>
+						<Card className="relative h-full border-2 border-primary/20 bg-card/95 backdrop-blur shadow-2xl">
+							<CardHeader className="space-y-8 pb-8">
+								<div className="space-y-3">
+									<motion.div
+										initial={{ opacity: 0, x: -20 }}
+										animate={isHeroInView ? { opacity: 1, x: 0 } : {}}
+										transition={{ delay: 0.5 }}
+									>
+										<Badge
+											variant="secondary"
+											className="bg-gradient-to-r from-primary/20 to-blue-500/20 text-primary"
+										>
+											Diferenciais técnicos
+										</Badge>
+									</motion.div>
+									<Title size="lg" className="font-heading">
+										Por que escolher minha atuação
+									</Title>
+								</div>
+							</CardHeader>
+							<CardContent className="space-y-4">
+								{[
+									{
+										icon: Target,
+										title: "Metodologia rigorosa",
+										desc: "Análise técnica fundamentada",
+									},
+									{
+										icon: Briefcase,
+										title: "Experiência consolidada",
+										desc: "35 anos de atuação",
+									},
+									{
+										icon: FileCheck2,
+										title: "Comunicação jurídica",
+										desc: "Laudos com linguagem adequada",
+									},
+									{
+										icon: Landmark,
+										title: "Foco em resultado",
+										desc: "Prova técnica consistente",
+									},
+								].map((item, idx) => (
+									<motion.div
+										key={item.title}
+										initial={{ opacity: 0, x: -20 }}
+										animate={isHeroInView ? { opacity: 1, x: 0 } : {}}
+										transition={{ delay: 0.6 + idx * 0.1 }}
+										className="flex items-center gap-4 rounded-xl bg-muted/50 p-4 transition-colors hover:bg-muted"
+									>
+										<div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10">
+											<item.icon className="size-6 text-primary" />
+										</div>
+										<div className="space-y-0.5">
+											<Text className="font-semibold">{item.title}</Text>
+											<Text size="xs" tone="muted">
+												{item.desc}
+											</Text>
+										</div>
+									</motion.div>
+								))}
+							</CardContent>
+						</Card>
+					</motion.div>
+				</div>
+			</div>
+		</section>
+	);
+}
