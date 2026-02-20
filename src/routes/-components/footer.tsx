@@ -19,7 +19,7 @@ export function Footer() {
 	return (
 		<footer className="border-t bg-gradient-to-b from-muted/20 to-muted/40">
 			<div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-				<div className="grid gap-10 py-14 md:grid-cols-[1.5fr_1fr]">
+				<div className="grid gap-8 py-8 sm:gap-10 sm:py-12 md:grid-cols-[1.5fr_1fr]">
 					<div className="space-y-5">
 						<motion.div
 							initial={{ opacity: 0, y: 20 }}

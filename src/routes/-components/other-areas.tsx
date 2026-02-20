@@ -40,11 +40,11 @@ const otherAreas = [
 
 export function OtherAreas() {
 	return (
-		<AnimatedSection className="border-t py-16 sm:py-20 lg:py-32" delay={0.1}>
-			<div className="space-y-4 mb-14">
+		<AnimatedSection className="border-t py-12 sm:py-16 lg:py-24" delay={0.1}>
+			<div className="space-y-3 mb-8 sm:space-y-4 sm:mb-10 lg:mb-14">
 				<Badge
 					variant="outline"
-					className="border-primary/30 bg-primary/5 px-4 py-1.5 text-primary"
+					className="border-primary/30 bg-primary/5 px-3 py-1 text-xs sm:px-4 sm:py-1.5 sm:text-sm"
 				>
 					<EmojiRenderer emoji="💼" />
 					Atuação complementar
@@ -52,7 +52,7 @@ export function OtherAreas() {
 				<Title size="lg" className="font-heading">
 					Outras áreas de atuação pericial
 				</Title>
-				<Text tone="subtle" className="max-w-2xl">
+				<Text tone="subtle" className="max-w-2xl text-sm sm:text-base">
 					Apoio técnico especializado em demandas que exigem leitura mecânica,
 					interpretação normativa e fundamentação probatória.
 				</Text>

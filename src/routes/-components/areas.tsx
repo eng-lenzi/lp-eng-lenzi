@@ -42,11 +42,11 @@ const focusAreas = [
 
 export function Areas() {
 	return (
-		<AnimatedSection id="areas" className="border-t py-16 sm:py-20 lg:py-32" delay={0.1}>
-			<div className="space-y-4 mb-14">
+		<AnimatedSection id="areas" className="border-t py-12 sm:py-16 lg:py-24" delay={0.1}>
+			<div className="space-y-3 mb-8 sm:space-y-4 sm:mb-10 lg:mb-14">
 				<Badge
 					variant="outline"
-					className="border-primary/30 bg-primary/5 px-4 py-1.5 text-primary"
+					className="border-primary/30 bg-primary/5 px-3 py-1 text-xs sm:px-4 sm:py-1.5 sm:text-sm"
 				>
 					<EmojiRenderer emoji="🎯" />
 					Foco técnico
@@ -54,7 +54,7 @@ export function Areas() {
 				<Title size="lg" className="font-heading">
 					Áreas de atuação prioritárias
 				</Title>
-				<Text tone="subtle" className="max-w-2xl">
+				<Text tone="subtle" className="max-w-2xl text-sm sm:text-base">
 					Especialização em sistemas de maior criticidade mecânica, com
 					enquadramento normativo e leitura técnica para produção de prova.
 				</Text>
@@ -68,10 +68,10 @@ export function Areas() {
 							<div
 								className={`absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r ${area.gradient}`}
 							/>
-							<CardHeader className="space-y-5">
-								<div className="flex items-start gap-5">
-									<div className={`flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br ${area.gradient}/20`}>
-										<area.icon className={`size-8 bg-gradient-to-r ${area.gradient} bg-clip-text text-transparent`} />
+							<CardHeader className="space-y-3 sm:space-y-5">
+								<div className="flex items-start gap-3 sm:gap-5">
+									<div className={`flex h-12 w-12 items-center justify-center rounded-xl sm:h-14 sm:w-14 sm:rounded-2xl bg-gradient-to-br ${area.gradient}/20`}>
+										<area.icon className={`size-6 sm:size-7 bg-gradient-to-r ${area.gradient} bg-clip-text text-transparent`} />
 									</div>
 									<div className="space-y-1 pt-1">
 										<Title size="lg" className="font-heading">

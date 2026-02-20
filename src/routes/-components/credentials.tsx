@@ -15,11 +15,11 @@ const credentials = [
 
 export function Credentials() {
 	return (
-		<AnimatedSection id="credenciais" className="border-t py-16 sm:py-20 lg:py-32" delay={0.1}>
-			<div className="space-y-4 mb-14">
+		<AnimatedSection id="credenciais" className="border-t py-12 sm:py-16 lg:py-24" delay={0.1}>
+			<div className="space-y-3 mb-8 sm:space-y-4 sm:mb-10 lg:mb-14">
 				<Badge
 					variant="outline"
-					className="border-primary/30 bg-primary/5 px-4 py-1.5 text-primary"
+					className="border-primary/30 bg-primary/5 px-3 py-1 text-xs sm:px-4 sm:py-1.5 sm:text-sm"
 				>
 					<EmojiRenderer emoji="🏆" />
 					Autoridade técnica
@@ -27,7 +27,7 @@ export function Credentials() {
 				<Title size="lg" className="font-heading">
 					Credenciais e experiência profissional
 				</Title>
-				<Text tone="subtle" className="max-w-2xl">
+				<Text tone="subtle" className="max-w-2xl text-sm sm:text-base">
 					Experiência acumulada em engenharia mecânica aplicada à prova técnica,
 					com atuação ética e fundamentada.
 				</Text>
@@ -60,9 +60,9 @@ export function Credentials() {
 
 			<AnimatedCard delay={0.3}>
 				<motion.div
-					className="mt-10 rounded-2xl border-2 border-amber-500/20 bg-gradient-to-r from-amber-500/10 via-amber-500/5 to-amber-500/10 p-8 transition-all hover:border-amber-500/30"
+					className="mt-8 rounded-2xl border-2 border-amber-500/20 bg-gradient-to-r from-amber-500/10 via-amber-500/5 to-amber-500/10 p-4 sm:mt-10 sm:p-6 lg:p-8 transition-all hover:border-amber-500/30"
 				>
-					<div className="flex flex-col gap-6 sm:flex-row sm:items-start">
+					<div className="flex flex-col gap-4 sm:flex-row sm:items-start">
 						<motion.div
 							animate={{
 								scale: [1, 1.1, 1],
@@ -71,9 +71,9 @@ export function Credentials() {
 								duration: 2,
 								repeat: Infinity,
 							}}
-							className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-amber-500/20"
+							className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl sm:h-14 sm:w-14 sm:rounded-2xl bg-amber-500/20"
 						>
-							<ShieldCheck className="size-7 text-amber-600" />
+							<ShieldCheck className="size-6 text-amber-600 sm:size-7" />
 						</motion.div>
 						<div className="space-y-3">
 							<Title size="md" className="font-heading">

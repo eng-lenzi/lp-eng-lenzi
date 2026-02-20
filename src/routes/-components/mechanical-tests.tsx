@@ -37,11 +37,11 @@ const nonDestructiveTests = [
 
 export function MechanicalTests() {
 	return (
-		<AnimatedSection id="ensaios" className="border-t py-16 sm:py-20 lg:py-32" delay={0.1}>
-			<div className="space-y-4 mb-14">
+		<AnimatedSection id="ensaios" className="border-t py-12 sm:py-16 lg:py-24" delay={0.1}>
+			<div className="space-y-3 mb-8 sm:space-y-4 sm:mb-10 lg:mb-14">
 				<Badge
 					variant="outline"
-					className="border-primary/30 bg-primary/5 px-4 py-1.5 text-primary"
+					className="border-primary/30 bg-primary/5 px-3 py-1 text-xs sm:px-4 sm:py-1.5 sm:text-sm"
 				>
 					<EmojiRenderer emoji="🔬" />
 					Suporte laboratorial
@@ -49,22 +49,22 @@ export function MechanicalTests() {
 				<Title size="lg" className="font-heading">
 					Atuação técnica e ensaios mecânicos
 				</Title>
-				<Text tone="subtle" className="max-w-2xl">
+				<Text tone="subtle" className="max-w-2xl text-sm sm:text-base">
 					Metodologia orientada por evidências para investigação de falhas,
 					validação de hipóteses técnicas e fundamentação de laudos.
 				</Text>
 			</div>
 
 			<AnimatedCard delay={0.2}>
-				<Card className="mb-10 border-border/60 bg-gradient-to-br from-muted/30 via-muted/20 to-transparent">
-					<CardContent className="grid gap-4 p-8 sm:grid-cols-2 lg:grid-cols-3">
+				<Card className="mb-8 border-border/60 bg-gradient-to-br from-muted/30 via-muted/20 to-transparent sm:mb-10">
+					<CardContent className="grid gap-3 p-4 sm:grid-cols-2 sm:gap-4 sm:p-6 lg:p-8">
 						{technicalActs.map((act, idx) => (
 							<motion.div
 								key={act}
 								initial={{ opacity: 0, y: 10 }}
 								whileInView={{ opacity: 1, y: 0 }}
 								transition={{ delay: idx * 0.05 }}
-								className="flex items-start gap-3"
+								className="flex items-start gap-2.5"
 							>
 								<motion.div
 									animate={{
@@ -76,9 +76,9 @@ export function MechanicalTests() {
 										delay: idx * 0.3,
 									}}
 								>
-									<CheckCircle2 className="mt-0.5 size-5 shrink-0 text-primary" />
+									<CheckCircle2 className="mt-0.5 size-4 shrink-0 text-primary sm:size-5" />
 								</motion.div>
-								<Text size="sm" tone="subtle">
+								<Text size="xs" tone="subtle" className="sm:text-sm">
 									{act}
 								</Text>
 							</motion.div>
@@ -90,11 +90,11 @@ export function MechanicalTests() {
 			<motion.div
 				initial={{ opacity: 0 }}
 				whileInView={{ opacity: 1 }}
-				className="mb-10 rounded-2xl border border-amber-500/20 bg-amber-500/5 p-6"
+				className="mb-8 rounded-xl border border-amber-500/20 bg-amber-500/5 p-4 sm:mb-10 sm:p-5 sm:rounded-2xl"
 			>
-				<div className="flex items-center gap-4">
-					<div className="flex h-12 w-12 items-center justify-center rounded-xl bg-amber-500/20">
-						<Zap className="size-6 text-amber-600" />
+				<div className="flex items-center gap-3 sm:gap-4">
+					<div className="flex h-10 w-10 items-center justify-center rounded-lg sm:h-11 sm:w-11 sm:rounded-xl bg-amber-500/20">
+						<Zap className="size-5 text-amber-600 sm:size-6" />
 					</div>
 					<div>
 						<Text className="font-medium text-amber-800 dark:text-amber-200">
@@ -112,10 +112,10 @@ export function MechanicalTests() {
 				<AnimatedCard delay={0.2}>
 					<Card className="group border-border/60 bg-card transition-all hover:shadow-lg hover:border-primary/30 overflow-hidden">
 						<div className="absolute inset-0 bg-gradient-to-br from-red-500/5 via-transparent to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
-						<CardHeader className="space-y-5">
-							<div className="flex items-center gap-4">
-								<div className="flex h-12 w-12 items-center justify-center rounded-xl bg-red-500/10">
-									<FlaskConical className="size-6 text-red-600" />
+						<CardHeader className="space-y-3 sm:space-y-5">
+							<div className="flex items-center gap-3 sm:gap-4">
+								<div className="flex h-10 w-10 items-center justify-center rounded-lg sm:h-11 sm:w-11 sm:rounded-xl bg-red-500/10">
+									<FlaskConical className="size-5 text-red-600 sm:size-6" />
 								</div>
 								<div>
 									<Title size="md" className="font-heading">
@@ -153,10 +153,10 @@ export function MechanicalTests() {
 				<AnimatedCard delay={0.3}>
 					<Card className="group border-border/60 bg-card transition-all hover:shadow-lg hover:border-primary/30 overflow-hidden">
 						<div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 via-transparent to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
-						<CardHeader className="space-y-5">
-							<div className="flex items-center gap-4">
-								<div className="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-500/10">
-									<FlaskConical className="size-6 text-emerald-600" />
+						<CardHeader className="space-y-3 sm:space-y-5">
+							<div className="flex items-center gap-3 sm:gap-4">
+								<div className="flex h-10 w-10 items-center justify-center rounded-lg sm:h-11 sm:w-11 sm:rounded-xl bg-emerald-500/10">
+									<FlaskConical className="size-5 text-emerald-600 sm:size-6" />
 								</div>
 								<div>
 									<Title size="md" className="font-heading">

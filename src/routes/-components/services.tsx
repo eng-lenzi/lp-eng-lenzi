@@ -46,11 +46,11 @@ const services = [
 
 export function Services() {
 	return (
-		<AnimatedSection id="servicos" className="border-t py-16 sm:py-20 lg:py-32" delay={0.1}>
-			<div className="space-y-4 mb-14">
+		<AnimatedSection id="servicos" className="border-t py-12 sm:py-16 lg:py-24" delay={0.1}>
+			<div className="space-y-3 mb-8 sm:space-y-4 sm:mb-10 lg:mb-14">
 				<Badge
 					variant="outline"
-					className="border-primary/30 bg-primary/5 px-4 py-1.5 text-primary"
+					className="border-primary/30 bg-primary/5 px-3 py-1 text-xs sm:px-4 sm:py-1.5 sm:text-sm"
 				>
 					<EmojiRenderer emoji="⚖️" />
 					Estrutura de atuação
@@ -58,7 +58,7 @@ export function Services() {
 				<Title size="lg" className="font-heading">
 					Serviços periciais para cada etapa do processo
 				</Title>
-				<Text tone="subtle" className="max-w-2xl">
+				<Text tone="subtle" className="max-w-2xl text-sm sm:text-base">
 					Atuação técnica completa, desde a nomeação judicial até a conclusão do
 					processo, com foco na produção de prova técnica consistente.
 				</Text>
@@ -70,10 +70,10 @@ export function Services() {
 						<Card className="group relative overflow-hidden border-border/60 bg-card h-full transition-all hover:shadow-lg hover:border-primary/30">
 							<div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-slate-500 via-slate-400 to-slate-500 opacity-50" />
 							<div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
-							<CardHeader className="space-y-5 pb-4">
+							<CardHeader className="space-y-4 pb-3 sm:space-y-5 sm:pb-4">
 								<div className="flex items-start justify-between">
-									<div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-slate-500/20">
-										<service.icon className="size-7 text-slate-600" />
+									<div className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-500/20 sm:h-12 sm:w-12 sm:rounded-2xl">
+										<service.icon className="size-5 text-slate-600 sm:size-6 sm:text-slate-600" />
 									</div>
 									<Badge
 										variant="secondary"
