@@ -3,6 +3,10 @@
   "outputDirectory": "dist",
   "rewrites": [
     {
+      "source": "/profile_fernando_lenzi.webp",
+      "destination": "/profile_fernando_lenzi.webp"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
