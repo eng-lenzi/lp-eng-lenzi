@@ -5,17 +5,12 @@ import {
 	ChevronRight,
 	Phone,
 	ShieldCheck,
-	Target,
-	Briefcase,
-	FileCheck2,
-	Landmark,
 	Zap,
 } from "lucide-react";
 
 import { Text, Title } from "@/components/typography";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import {
 	AnimatedSection,
 	AnimatedNumber,
@@ -127,91 +122,65 @@ export function Hero() {
 					</AnimatedSection>
 				</div>
 
-				<div className="relative hidden lg:block">
+				<div className="relative hidden lg:block h-full">
 					<motion.div
 						initial={{ opacity: 0, scale: 0.9, rotate: -2 }}
 						animate={isHeroInView ? { opacity: 1, scale: 1, rotate: 0 } : {}}
 						transition={{ duration: 0.8, delay: 0.3 }}
-						className="relative"
+						className="relative h-full"
 					>
-						<div className="absolute -inset-6 rounded-3xl bg-gradient-to-br from-primary/20 via-blue-500/10 to-transparent" />
 						<FloatingElement className="absolute -right-4 top-1/4">
-							<div className="rounded-xl bg-card p-3 shadow-xl">
+							<motion.div
+								initial={{ opacity: 0, x: 20 }}
+								animate={isHeroInView ? { opacity: 1, x: 0 } : {}}
+								transition={{ delay: 0.8, duration: 0.5 }}
+								className="rounded-xl bg-card p-3 shadow-xl"
+							>
 								<div className="flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-500/10">
 									<CheckCircle2 className="size-5 text-emerald-600" />
 								</div>
-							</div>
+							</motion.div>
 						</FloatingElement>
-						<FloatingElement className="absolute -left-4 bottom-1/4" style={{ animationDelay: "1s" }}>
-							<div className="rounded-xl bg-card p-3 shadow-xl">
+						<FloatingElement className="absolute -left-4 bottom-1/3" style={{ animationDelay: "1s" }}>
+							<motion.div
+								initial={{ opacity: 0, x: -20 }}
+								animate={isHeroInView ? { opacity: 1, x: 0 } : {}}
+								transition={{ delay: 1, duration: 0.5 }}
+								className="rounded-xl bg-card p-3 shadow-xl"
+							>
 								<div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-500/10">
 									<ShieldCheck className="size-5 text-blue-600" />
 								</div>
-							</div>
+							</motion.div>
 						</FloatingElement>
-						<Card className="relative h-full border-2 border-primary/20 bg-card/95 backdrop-blur shadow-2xl">
-							<CardHeader className="space-y-8 pb-8">
-								<div className="space-y-3">
-									<motion.div
-										initial={{ opacity: 0, x: -20 }}
-										animate={isHeroInView ? { opacity: 1, x: 0 } : {}}
-										transition={{ delay: 0.5 }}
-									>
-										<Badge
-											variant="secondary"
-											className="bg-gradient-to-r from-primary/20 to-blue-500/20 text-primary"
-										>
-											Diferenciais técnicos
-										</Badge>
-									</motion.div>
-									<Title size="lg" className="font-heading">
-										Por que escolher minha atuação
-									</Title>
-								</div>
-							</CardHeader>
-							<CardContent className="space-y-4">
-								{[
-									{
-										icon: Target,
-										title: "Metodologia rigorosa",
-										desc: "Análise técnica fundamentada",
-									},
-									{
-										icon: Briefcase,
-										title: "Experiência consolidada",
-										desc: "35 anos de atuação",
-									},
-									{
-										icon: FileCheck2,
-										title: "Comunicação jurídica",
-										desc: "Laudos com linguagem adequada",
-									},
-									{
-										icon: Landmark,
-										title: "Foco em resultado",
-										desc: "Prova técnica consistente",
-									},
-								].map((item, idx) => (
-									<motion.div
-										key={item.title}
-										initial={{ opacity: 0, x: -20 }}
-										animate={isHeroInView ? { opacity: 1, x: 0 } : {}}
-										transition={{ delay: 0.6 + idx * 0.1 }}
-										className="flex items-center gap-4 rounded-xl bg-muted/50 p-4 transition-colors hover:bg-muted"
-									>
-										<div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10">
-											<item.icon className="size-6 text-primary" />
+						<div className="relative h-full flex items-center">
+							<div className="relative mx-auto w-full max-w-sm">
+								<motion.div
+									initial={{ opacity: 0, scale: 0.9 }}
+									animate={isHeroInView ? { opacity: 1, scale: 1 } : {}}
+									transition={{ delay: 0.6, duration: 0.6 }}
+									className="relative"
+								>
+									<div className="relative rounded-2xl bg-card p-2 shadow-2xl">
+										<div className="relative overflow-hidden rounded-xl">
+											<img
+												src="/profile_fernando_lenzi.webp"
+												alt="Fernando Lenzi - Engenheiro Mecânico"
+												className="w-full aspect-[3/4] object-cover object-top"
+											/>
+											<div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+											<div className="absolute bottom-0 left-0 right-0 p-4">
+												<Text className="text-xl font-bold text-white">Fernando Lenzi</Text>
+												<Text size="sm" className="text-white/80">Engenheiro Mecânico</Text>
+												<div className="mt-1.5 inline-block rounded-lg bg-primary/90 px-3 py-1">
+													<Text size="xs" className="font-semibold text-white">CREA-SP: 123.456</Text>
+												</div>
+											</div>
 										</div>
-										<div className="space-y-0.5">
-											<Text className="font-semibold">{item.title}</Text>
-											<Text size="xs" tone="muted">
-												{item.desc}
-											</Text>
-										</div>
-									</motion.div>
-								))}
-							</CardContent>
-						</Card>
+									</div>
+								</motion.div>
+							</div>
+						</div>
 					</motion.div>
 				</div>
 			</div>

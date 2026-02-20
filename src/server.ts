@@ -1,4 +1,5 @@
 import { fileURLToPath } from "node:url";
+import path from "node:path";
 import tailwind from "bun-plugin-tailwind";
 
 const preferredPort = 3178;
@@ -83,6 +84,30 @@ function startServer() {
                 "Cache-Control": "no-store",
               },
             }),
+          "/:filename": async (req) => {
+            const url = new URL(req.url);
+            const filename = url.pathname;
+            const filePath = path.join(process.cwd(), "public", filename);
+            const file = Bun.file(filePath);
+            if (await file.exists()) {
+              const ext = path.extname(filename).toLowerCase();
+              const contentTypes: Record<string, string> = {
+                ".jpg": "image/jpeg",
+                ".jpeg": "image/jpeg",
+                ".png": "image/png",
+                ".webp": "image/webp",
+                ".gif": "image/gif",
+                ".svg": "image/svg+xml",
+              };
+              return new Response(file, {
+                headers: {
+                  "Content-Type": contentTypes[ext] || "application/octet-stream",
+                  "Cache-Control": "no-store",
+                },
+              });
+            }
+            return new Response("Not found", { status: 404 });
+          },
         },
         fetch() {
           return new Response(indexHtml, {
