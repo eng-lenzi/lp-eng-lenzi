@@ -1,4 +1,3 @@
-import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import {
 	CheckCircle2,
@@ -7,13 +6,14 @@ import {
 	ShieldCheck,
 	Zap,
 } from "lucide-react";
+import { useRef } from "react";
 
 import { Text, Title } from "@/components/typography";
-import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import {
-	AnimatedSection,
 	AnimatedNumber,
+	AnimatedSection,
 	FloatingElement,
 	GlowingOrb,
 	HeroParticles,
@@ -22,8 +22,8 @@ import {
 const stats = [
 	{ value: "35+", label: "Anos de experiência", suffix: "" },
 	{ value: "12", label: "Anos no CREA-SP", suffix: "" },
-	{ value: "1000+", label: "Perícias realizadas", suffix: "+" },
-	{ value: "98%", label: "Satisfação", suffix: "%" },
+	{ value: "1000", label: "Perícias realizadas", suffix: "+" },
+	{ value: "98", label: "Satisfação", suffix: "%" },
 ] as const;
 
 export function Hero() {
@@ -57,15 +57,20 @@ export function Hero() {
 							size="xl"
 							className="font-heading text-3xl sm:text-4xl lg:text-[3.5rem] leading-[1.1]"
 						>
-							Engenharia mecânica aplicada à{" "}
+							Perito em{" "}
 							<span className="bg-gradient-to-r from-primary via-primary/80 to-blue-500 bg-clip-text text-transparent">
-								prova técnica
+								engenharia mecânica
 							</span>
+                                          {" "}aplicada à prova técnica.
 						</Title>
 					</AnimatedSection>
 
 					<AnimatedSection delay={0.3}>
-						<Text size="sm" tone="subtle" className="max-w-xl leading-relaxed sm:text-base">
+						<Text
+							size="sm"
+							tone="subtle"
+							className="max-w-xl leading-relaxed sm:text-base"
+						>
 							<motion.span
 								initial={{ opacity: 0 }}
 								animate={{ opacity: 1 }}
@@ -80,7 +85,11 @@ export function Hero() {
 
 					<AnimatedSection delay={0.4}>
 						<div className="flex flex-wrap gap-3">
-							<Button asChild size="sm" className="gap-2 shadow-lg shadow-primary/20 sm:size-lg">
+							<Button
+								asChild
+								size="sm"
+								className="gap-2 shadow-lg shadow-primary/20 sm:size-lg"
+							>
 								<a href="tel:+5519997110785">
 									<Phone className="size-4" />
 									Falar por telefone
@@ -141,7 +150,10 @@ export function Hero() {
 								</div>
 							</motion.div>
 						</FloatingElement>
-						<FloatingElement className="absolute -left-2 bottom-[20%] z-10 sm:left-0 sm:bottom-1/3" style={{ animationDelay: "1s" }}>
+						<FloatingElement
+							className="absolute -left-2 bottom-[20%] z-10 sm:left-0 sm:bottom-1/3"
+							style={{ animationDelay: "1s" }}
+						>
 							<motion.div
 								initial={{ opacity: 0, x: -20 }}
 								animate={isHeroInView ? { opacity: 1, x: 0 } : {}}
@@ -170,10 +182,16 @@ export function Hero() {
 											/>
 											<div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
 											<div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4">
-												<Text className="text-lg font-bold text-white sm:text-xl">Fernando Lenzi</Text>
-												<Text size="xs" className="text-white/80 sm:text-sm">Engenheiro Mecânico</Text>
+												<Text className="text-lg font-bold text-white sm:text-xl">
+													Fernando Lenzi
+												</Text>
+												<Text size="xs" className="text-white/80 sm:text-sm">
+													Engenheiro Mecânico
+												</Text>
 												<div className="mt-1 inline-block rounded-lg bg-primary/90 px-2 py-0.5 sm:mt-1.5 sm:px-3 sm:py-1">
-													<Text size="xs" className="font-semibold text-white">CREA-SP: 123.456</Text>
+													<Text size="xs" className="font-semibold text-white">
+														CREA-SP: 123.456
+													</Text>
 												</div>
 											</div>
 										</div>

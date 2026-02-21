@@ -1,11 +1,24 @@
-import { TrendingUp, ChevronRight } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 
 import { Text, Title } from "@/components/typography";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { AnimatedSection, AnimatedCard, EmojiRenderer, Flame } from "./animation-helpers";
+import {
+	AnimatedCard,
+	AnimatedSection,
+	ElevatorDiagram,
+	EmojiRenderer,
+	PressureVesselDiagram,
+} from "./animation-helpers";
 
-const focusAreas = [
+const focusAreas: Array<{
+	title: string;
+	description: string;
+	items: string[];
+	icon: React.ComponentType<{ className?: string }>;
+	gradient: string;
+	bgGradient: string;
+}> = [
 	{
 		title: "Elevadores",
 		description:
@@ -18,7 +31,7 @@ const focusAreas = [
 			"Avaliação de contratos de manutenção",
 			"Determinação de causa raiz",
 		],
-		icon: TrendingUp,
+		icon: ElevatorDiagram,
 		gradient: "from-blue-500 via-blue-400 to-cyan-400",
 		bgGradient: "from-blue-500/10 via-blue-400/5 to-transparent",
 	},
@@ -34,7 +47,7 @@ const focusAreas = [
 			"Análise de histórico operacional",
 			"Laudos para processos judiciais",
 		],
-		icon: Flame,
+		icon: PressureVesselDiagram,
 		gradient: "from-orange-500 via-red-400 to-amber-400",
 		bgGradient: "from-orange-500/10 via-red-400/5 to-transparent",
 	},
@@ -42,7 +55,11 @@ const focusAreas = [
 
 export function Areas() {
 	return (
-		<AnimatedSection id="areas" className="border-t py-12 sm:py-16 lg:py-24" delay={0.1}>
+		<AnimatedSection
+			id="areas"
+			className="border-t py-12 sm:py-16 lg:py-24"
+			delay={0.1}
+		>
 			<div className="space-y-3 mb-8 sm:space-y-4 sm:mb-10 lg:mb-14">
 				<Badge
 					variant="outline"
@@ -64,14 +81,18 @@ export function Areas() {
 				{focusAreas.map((area, idx) => (
 					<AnimatedCard key={area.title} delay={idx * 0.15}>
 						<Card className="group relative overflow-hidden border-border/60 bg-card h-full transition-all hover:shadow-lg hover:border-primary/30">
-							<div className={`absolute inset-0 bg-gradient-to-br ${area.bgGradient} opacity-0 transition-opacity group-hover:opacity-100`} />
+							<div
+								className={`absolute inset-0 bg-gradient-to-br ${area.bgGradient} opacity-0 transition-opacity group-hover:opacity-100`}
+							/>
 							<div
 								className={`absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r ${area.gradient}`}
 							/>
 							<CardHeader className="space-y-3 sm:space-y-5">
 								<div className="flex items-start gap-3 sm:gap-5">
-									<div className={`flex h-12 w-12 items-center justify-center rounded-xl sm:h-14 sm:w-14 sm:rounded-2xl bg-gradient-to-br ${area.gradient}/20`}>
-										<area.icon className={`size-6 sm:size-7 bg-gradient-to-r ${area.gradient} bg-clip-text text-transparent`} />
+									<div
+										className={`flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-md bg-gradient-to-br ${area.gradient}/10 `}
+									>
+										<area.icon className="size-10 sm:size-12" />
 									</div>
 									<div className="space-y-1 pt-1">
 										<Title size="lg" className="font-heading">
