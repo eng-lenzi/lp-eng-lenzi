@@ -12,7 +12,7 @@ const menuItems = [
 	{ label: "Áreas de Atuação", href: "#areas" },
 	{ label: "Ensaios", href: "#ensaios" },
 	{ label: "Credenciais", href: "#credenciais" },
-	{ label: "Contato", href: "#contato" },
+	{ label: "WhatsApp", href: "#contato" },
 ] as const;
 
 function MobileMenu({

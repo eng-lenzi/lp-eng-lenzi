@@ -16,10 +16,10 @@ export function Contact() {
 					className="border-primary/30 bg-primary/5 px-3 py-1 text-xs sm:px-4 sm:py-1.5 sm:text-sm"
 				>
 					<EmojiRenderer emoji="📞" />
-					Contato
+					WhatsApp e formulário
 				</Badge>
 				<Title size="lg" className="font-heading">
-					Envie os dados do caso para avaliação
+					Fale no WhatsApp ou envie os dados do caso
 				</Title>
 				<Text tone="subtle" className="max-w-2xl text-sm sm:text-base">
 					Canal direto para perícia judicial e assistência técnica em
@@ -64,7 +64,7 @@ export function Contact() {
 									</div>
 									<div>
 										<Text size="xs" tone="muted">
-											Telefone
+											WhatsApp
 										</Text>
 										<Text className="text-lg font-semibold">
 											(19) 99711-0785
@@ -100,7 +100,7 @@ export function Contact() {
 
 				<AnimatedCard delay={0.3}>
 					<ContactForm
-						title="Formulário de contato"
+						title="Formulário de pré-avaliação"
 						description="Descreva o caso, local da ocorrência e documentos já disponíveis."
 					/>
 				</AnimatedCard>

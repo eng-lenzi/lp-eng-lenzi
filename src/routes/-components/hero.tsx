@@ -102,7 +102,7 @@ export function Hero() {
 								className="gap-2 sm:size-lg"
 							>
 								<a href="#contato">
-									Enviar mensagem
+									Enviar detalhes do caso
 									<ChevronRight className="size-4" />
 								</a>
 							</Button>

@@ -140,6 +140,14 @@ export function ContactForm({
             </Text>
           )}
 
+          {(errorMessage || !hasEmailJsConfig) && (
+            <Button asChild type="button" variant="outline" className="w-full">
+              <a href={fallbackHref} target="_blank" rel="noopener noreferrer">
+                Falar no WhatsApp
+              </a>
+            </Button>
+          )}
+
           <Button type="submit" disabled={isSubmitting} className="w-full">
             {isSubmitting && <Loader2 className="size-4 animate-spin" />}
             <Send />

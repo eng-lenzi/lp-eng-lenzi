@@ -32,7 +32,7 @@ export const projectData = {
         "href": "#faq"
       },
       {
-        "label": "Contato",
+        "label": "WhatsApp",
         "href": "#contato"
       }
     ],
@@ -50,7 +50,7 @@ export const projectData = {
         "href": "/servicos"
       },
       {
-        "label": "Contato",
+        "label": "WhatsApp",
         "href": "/contato"
       }
     ]
