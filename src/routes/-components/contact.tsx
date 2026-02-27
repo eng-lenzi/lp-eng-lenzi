@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
-import { User, Phone, MapPin } from "lucide-react";
+import { User, Phone, MapPin, MessageCircle } from "lucide-react";
 
 import { Text, Title } from "@/components/typography";
 import { Badge } from "@/components/ui/badge";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { AnimatedSection, AnimatedCard } from "./animation-helpers";
 import { ContactForm } from "./contact-form";
-import { AnimatedSection, AnimatedCard, EmojiRenderer } from "./animation-helpers";
 
 export function Contact() {
 	return (
@@ -15,7 +15,7 @@ export function Contact() {
 					variant="outline"
 					className="border-primary/30 bg-primary/5 px-3 py-1 text-xs sm:px-4 sm:py-1.5 sm:text-sm"
 				>
-					<EmojiRenderer emoji="📞" />
+					<MessageCircle className="mr-1.5 size-3" />
 					WhatsApp e formulário
 				</Badge>
 				<Title as="h2" id="contato-title" size="lg" className="font-heading">
@@ -33,9 +33,9 @@ export function Contact() {
 						<Card className="border-border/60 bg-gradient-to-br from-muted/40 via-muted/20 to-transparent">
 							<CardContent className="space-y-6 p-5 sm:space-y-8 sm:p-8">
 								<motion.div
-									initial={{ scale: 0 }}
-									animate={{ scale: 1 }}
-									transition={{ type: "spring", stiffness: 200, delay: 0.3 }}
+									initial={{ opacity: 0 }}
+									animate={{ opacity: 1 }}
+									transition={{ duration: 0.3, delay: 0.3 }}
 									className="flex items-center gap-4 sm:gap-5"
 								>
 									<div className="flex h-12 w-12 items-center justify-center rounded-xl sm:h-14 sm:w-14 sm:rounded-2xl bg-gradient-to-br from-primary to-primary/80 text-primary-foreground shadow-lg shadow-primary/25">
