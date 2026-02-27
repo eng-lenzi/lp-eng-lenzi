@@ -59,7 +59,7 @@ function MobileMenu({
 									initial={{ opacity: 0, x: 20 }}
 									animate={{ opacity: 1, x: 0 }}
 									transition={{ delay: idx * 0.05 }}
-									className="flex items-center justify-between rounded-xl px-4 py-4 text-lg font-medium transition-colors hover:bg-primary/10 hover:pl-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+									className="flex items-center justify-between rounded-xl px-4 py-4 text-lg font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
 								>
 									{item.label}
 									<ChevronRight className="size-5 text-muted-foreground" />
@@ -117,21 +117,16 @@ export function Header({ mobileMenuOpen, setMobileMenuOpen }: HeaderProps) {
 				onClose={() => setMobileMenuOpen(false)}
 				handleNavClick={handleNavClick}
 			/>
-			<header className="fixed top-0 left-0 right-0 z-50">
+			<header className="fixed top-0 left-0 right-0 z-40 bg-background">
 				<div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
 					<button
 						type="button"
 						onClick={(e) => handleNavClick(e as unknown as React.MouseEvent<HTMLAnchorElement>, "inicio")}
 						className="flex items-center gap-3 hover:opacity-80 transition-opacity cursor-pointer"
 					>
-						<motion.div
-							initial={{ scale: 0 }}
-							animate={{ scale: 1 }}
-							transition={{ type: "spring", stiffness: 200, damping: 15 }}
-							className="flex h-9 w-9 items-center justify-center overflow-hidden rounded-lg bg-background"
-						>
+						<div className="flex h-9 w-9 items-center justify-center overflow-hidden rounded-lg">
 							<LogoMark className="h-full w-full object-contain" />
-						</motion.div>
+						</div>
 						<Text className="font-semibold">
 							Fernando Eugênio Lenzi
 						</Text>
@@ -165,7 +160,7 @@ export function Header({ mobileMenuOpen, setMobileMenuOpen }: HeaderProps) {
 							type="button"
 							variant="ghost"
 							size="icon"
-							className="lg:hidden"
+							className="lg:hidden text-foreground"
 							aria-label={mobileMenuOpen ? "Fechar menu" : "Abrir menu"}
 							onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
 						>
