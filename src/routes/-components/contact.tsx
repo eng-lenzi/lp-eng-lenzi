@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { User, Phone, MapPin, MessageCircle } from "lucide-react";
+import { Phone, MapPin, MessageCircle } from "lucide-react";
 
 import { Text, Title } from "@/components/typography";
 import { Badge } from "@/components/ui/badge";
@@ -36,8 +36,12 @@ export function Contact() {
 								transition={{ duration: 0.3, delay: 0.3 }}
 								className="flex items-center gap-4 sm:gap-5"
 							>
-								<div className="flex h-12 w-12 items-center justify-center rounded-xl sm:h-14 sm:w-14 sm:rounded-2xl bg-gradient-to-br from-primary to-primary/80 text-primary-foreground shadow-lg shadow-primary/25">
-									<User className="size-6 sm:size-8" />
+								<div className="flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center overflow-hidden rounded-xl sm:rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 shadow-lg">
+									<img
+										src="/brand/logo.svg"
+										alt=""
+										className="h-full w-full object-contain"
+									/>
 								</div>
 								<div>
 									<Text className="text-xl font-semibold">
