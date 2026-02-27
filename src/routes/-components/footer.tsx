@@ -26,7 +26,7 @@ export function Footer() {
 							whileInView={{ opacity: 1, y: 0 }}
 							className="flex items-center gap-3"
 						>
-							<div className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-lg bg-background shadow-lg ring-1 ring-border">
+							<div className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-lg bg-background shadow-lg">
 								<LogoMark className="h-full w-full object-contain" />
 							</div>
 							<Text className="text-lg font-semibold">

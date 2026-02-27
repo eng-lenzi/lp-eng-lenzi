@@ -117,7 +117,7 @@ export function Header({ mobileMenuOpen, setMobileMenuOpen }: HeaderProps) {
 				onClose={() => setMobileMenuOpen(false)}
 				handleNavClick={handleNavClick}
 			/>
-			<header className="fixed top-0 left-0 right-0 z-50 border-b bg-background/80 backdrop-blur-xl supports-[backdrop-filter]:bg-background/60">
+			<header className="fixed top-0 left-0 right-0 z-50">
 				<div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
 					<button
 						type="button"
@@ -128,11 +128,11 @@ export function Header({ mobileMenuOpen, setMobileMenuOpen }: HeaderProps) {
 							initial={{ scale: 0 }}
 							animate={{ scale: 1 }}
 							transition={{ type: "spring", stiffness: 200, damping: 15 }}
-							className="flex h-9 w-9 items-center justify-center overflow-hidden rounded-lg bg-background shadow-lg ring-1 ring-border"
+							className="flex h-9 w-9 items-center justify-center overflow-hidden rounded-lg bg-background"
 						>
 							<LogoMark className="h-full w-full object-contain" />
 						</motion.div>
-						<Text className="font-semibold hidden sm:block">
+						<Text className="font-semibold">
 							Fernando Eugênio Lenzi
 						</Text>
 					</button>

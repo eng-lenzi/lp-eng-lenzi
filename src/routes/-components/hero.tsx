@@ -8,7 +8,6 @@ import {
 } from "lucide-react";
 import { useRef } from "react";
 
-import { LogoMark } from "@/components/logo-mark";
 import { Text, Title } from "@/components/typography";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -155,18 +154,6 @@ export function Hero() {
 							</motion.div>
 						</FloatingElement>
 
-						<FloatingElement className="absolute right-8 top-[62%] z-10 hidden sm:block" style={{ animationDelay: "1.4s" }}>
-							<motion.div
-								initial={{ opacity: 0, scale: 0.8 }}
-								animate={isHeroInView ? { opacity: 1, scale: 1 } : {}}
-								transition={{ delay: 1.2, duration: 0.5 }}
-								className="rounded-xl bg-card/95 p-2 shadow-xl backdrop-blur"
-							>
-								<div className="flex h-8 w-8 items-center justify-center overflow-hidden rounded-lg ring-1 ring-border sm:h-10 sm:w-10">
-									<LogoMark className="h-full w-full object-contain opacity-90" />
-								</div>
-							</motion.div>
-						</FloatingElement>
 						<FloatingElement
 							className="absolute -left-2 bottom-[20%] z-10 sm:left-0 sm:bottom-1/3"
 							style={{ animationDelay: "1s" }}
@@ -183,16 +170,6 @@ export function Hero() {
 							</motion.div>
 						</FloatingElement>
 
-						<FloatingElement className="absolute left-10 top-[18%] z-10 hidden sm:block" style={{ animationDelay: "1.8s" }}>
-							<motion.div
-								initial={{ opacity: 0, scale: 0.85 }}
-								animate={isHeroInView ? { opacity: 1, scale: 1 } : {}}
-								transition={{ delay: 1.3, duration: 0.5 }}
-								className="rounded-full bg-card/90 p-2 shadow-lg backdrop-blur"
-							>
-								<LogoMark className="h-7 w-7 object-contain opacity-70" />
-							</motion.div>
-						</FloatingElement>
 						<div className="relative h-full flex items-center justify-center">
 							<div className="relative w-full max-w-[280px] sm:max-w-sm">
 								<motion.div

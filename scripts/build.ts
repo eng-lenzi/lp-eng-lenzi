@@ -43,16 +43,23 @@ const indexHtml = sourceIndexHtml
 
 await Bun.write(`${outdir}/index.html`, indexHtml);
 
-const copyPublicFiles = async () => {
+const copyPublicFiles = async (srcDir: string, destDir: string) => {
   try {
-    const files = await readdir(publicDir);
-    for (const file of files) {
-      await copyFile(path.join(publicDir, file), path.join(outdir, file));
+    const entries = await readdir(srcDir, { withFileTypes: true });
+    for (const entry of entries) {
+      const srcPath = path.join(srcDir, entry.name);
+      const destPath = path.join(destDir, entry.name);
+      if (entry.isDirectory()) {
+        await mkdir(destPath, { recursive: true });
+        await copyPublicFiles(srcPath, destPath);
+      } else {
+        await copyFile(srcPath, destPath);
+      }
     }
   } catch {
     // public dir vazio ou não existe
   }
 };
-await copyPublicFiles();
+await copyPublicFiles(publicDir, outdir);
 
 console.log(`Build concluido em ${outdir}`);
