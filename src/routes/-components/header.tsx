@@ -2,10 +2,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronRight, Menu, X } from "lucide-react";
 import { useEffect } from "react";
 
+import { LogoMark } from "@/components/logo-mark";
 import { Text } from "@/components/typography";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
-import { Crosshair, Phone } from "lucide-react";
+import { Phone } from "lucide-react";
 
 const menuItems = [
 	{ label: "Início", href: "#inicio" },
@@ -127,9 +128,9 @@ export function Header({ mobileMenuOpen, setMobileMenuOpen }: HeaderProps) {
 							initial={{ scale: 0 }}
 							animate={{ scale: 1 }}
 							transition={{ type: "spring", stiffness: 200, damping: 15 }}
-							className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-primary to-primary/80 text-primary-foreground shadow-lg shadow-primary/25"
+							className="flex h-9 w-9 items-center justify-center overflow-hidden rounded-lg bg-background shadow-lg ring-1 ring-border"
 						>
-							<Crosshair className="size-5" />
+							<LogoMark className="h-full w-full object-contain" />
 						</motion.div>
 						<Text className="font-semibold hidden sm:block">
 							Fernando Eugênio Lenzi

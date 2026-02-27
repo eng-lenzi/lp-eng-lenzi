@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import { Crosshair } from "lucide-react";
 
+import { LogoMark } from "@/components/logo-mark";
 import { Text } from "@/components/typography";
 import { Title } from "@/components/typography";
 
@@ -26,8 +26,8 @@ export function Footer() {
 							whileInView={{ opacity: 1, y: 0 }}
 							className="flex items-center gap-3"
 						>
-							<div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-primary to-primary/80 text-primary-foreground shadow-lg shadow-primary/20">
-								<Crosshair className="size-5" />
+							<div className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-lg bg-background shadow-lg ring-1 ring-border">
+								<LogoMark className="h-full w-full object-contain" />
 							</div>
 							<Text className="text-lg font-semibold">
 								Fernando Eugênio Lenzi
