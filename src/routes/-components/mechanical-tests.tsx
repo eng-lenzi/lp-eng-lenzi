@@ -1,10 +1,11 @@
 import { motion } from "framer-motion";
-import { FlaskConical, Zap, CheckCircle2 } from "lucide-react";
+import { FlaskConical, Microscope, CheckCircle2 } from "lucide-react";
 
 import { Text, Title } from "@/components/typography";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { AnimatedSection, AnimatedCard, EmojiRenderer } from "./animation-helpers";
+import { AnimatedSection, AnimatedCard } from "./animation-helpers";
+import { scrollToSection } from "@/lib/utils";
 
 const technicalActs = [
 	"Análise de falhas mecânicas em máquinas e equipamentos",
@@ -43,7 +44,7 @@ export function MechanicalTests() {
 					variant="outline"
 					className="border-primary/30 bg-primary/5 px-3 py-1 text-xs sm:px-4 sm:py-1.5 sm:text-sm"
 				>
-					<EmojiRenderer emoji="🔬" />
+					<Microscope className="mr-1.5 size-3" />
 					Suporte laboratorial
 				</Badge>
 				<Title as="h2" id="ensaios-title" size="lg" className="font-heading">
@@ -61,23 +62,14 @@ export function MechanicalTests() {
 						{technicalActs.map((act, idx) => (
 							<motion.div
 								key={act}
-								initial={{ opacity: 0, y: 10 }}
-								whileInView={{ opacity: 1, y: 0 }}
+								initial={{ opacity: 0 }}
+								whileInView={{ opacity: 1 }}
 								transition={{ delay: idx * 0.05 }}
 								className="flex items-start gap-2.5"
 							>
-								<motion.div
-									animate={{
-										scale: [1, 1.2, 1],
-									}}
-									transition={{
-										duration: 2,
-										repeat: Infinity,
-										delay: idx * 0.3,
-									}}
-								>
+								<div>
 									<CheckCircle2 className="mt-0.5 size-4 shrink-0 text-primary sm:size-5" />
-								</motion.div>
+								</div>
 								<Text size="xs" tone="subtle" className="sm:text-sm">
 									{act}
 								</Text>
@@ -94,7 +86,7 @@ export function MechanicalTests() {
 			>
 				<div className="flex items-center gap-3 sm:gap-4">
 					<div className="flex h-10 w-10 items-center justify-center rounded-lg sm:h-11 sm:w-11 sm:rounded-xl bg-amber-500/20">
-						<Zap className="size-5 text-amber-600 sm:size-6" />
+						<FlaskConical className="size-5 text-amber-600 sm:size-6" />
 					</div>
 					<div>
 						<Text className="font-medium text-amber-800 dark:text-amber-200">
@@ -111,7 +103,6 @@ export function MechanicalTests() {
 			<div className="grid gap-6 md:grid-cols-2">
 				<AnimatedCard delay={0.2}>
 					<Card className="group border-border/60 bg-card transition-all hover:shadow-lg hover:border-primary/30 overflow-hidden">
-						<div className="absolute inset-0 bg-gradient-to-br from-red-500/5 via-transparent to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
 						<CardHeader className="space-y-3 sm:space-y-5">
 							<div className="flex items-center gap-3 sm:gap-4">
 								<div className="flex h-10 w-10 items-center justify-center rounded-lg sm:h-11 sm:w-11 sm:rounded-xl bg-red-500/10">
@@ -132,8 +123,8 @@ export function MechanicalTests() {
 								{destructiveTests.map((test, idx) => (
 									<motion.div
 										key={test.name}
-										initial={{ opacity: 0, scale: 0.9 }}
-										whileInView={{ opacity: 1, scale: 1 }}
+										initial={{ opacity: 0 }}
+										whileInView={{ opacity: 1 }}
 										transition={{ delay: idx * 0.03 }}
 										className="flex items-center gap-3 rounded-lg bg-muted/50 p-3 transition-colors hover:bg-muted"
 									>
@@ -152,7 +143,6 @@ export function MechanicalTests() {
 
 				<AnimatedCard delay={0.3}>
 					<Card className="group border-border/60 bg-card transition-all hover:shadow-lg hover:border-primary/30 overflow-hidden">
-						<div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 via-transparent to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
 						<CardHeader className="space-y-3 sm:space-y-5">
 							<div className="flex items-center gap-3 sm:gap-4">
 								<div className="flex h-10 w-10 items-center justify-center rounded-lg sm:h-11 sm:w-11 sm:rounded-xl bg-emerald-500/10">
@@ -173,8 +163,8 @@ export function MechanicalTests() {
 								{nonDestructiveTests.map((test, idx) => (
 									<motion.div
 										key={test.name}
-										initial={{ opacity: 0, scale: 0.9 }}
-										whileInView={{ opacity: 1, scale: 1 }}
+										initial={{ opacity: 0 }}
+										whileInView={{ opacity: 1 }}
 										transition={{ delay: idx * 0.05 }}
 										className="flex items-center gap-3 rounded-lg bg-muted/50 p-3 transition-colors hover:bg-muted"
 									>
@@ -195,9 +185,9 @@ export function MechanicalTests() {
 			<nav aria-label="Links internos de ensaios" className="mt-8 rounded-lg border border-border/60 bg-muted/30 p-4">
 				<Text size="xs" tone="muted" className="mb-2 uppercase tracking-wide">Veja também</Text>
 				<div className="flex flex-wrap gap-4 text-sm">
-					<a href="#areas" className="text-primary hover:underline">Áreas de atuação</a>
-					<a href="#outras-areas" className="text-primary hover:underline">Outras especialidades</a>
-					<a href="#contato" className="text-primary hover:underline">Enviar detalhes do caso</a>
+					<a href="#areas" className="text-primary hover:underline" onClick={(e) => scrollToSection(e, "areas")}>Áreas de atuação</a>
+					<a href="#outras-areas" className="text-primary hover:underline" onClick={(e) => scrollToSection(e, "outras-areas")}>Outras especialidades</a>
+					<a href="#contato" className="text-primary hover:underline" onClick={(e) => scrollToSection(e, "contato")}>Enviar detalhes do caso</a>
 				</div>
 			</nav>
 		</AnimatedSection>

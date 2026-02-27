@@ -3,7 +3,8 @@ import { Gavel, Scale, FileCheck2, CheckCircle2 } from "lucide-react";
 import { Text, Title } from "@/components/typography";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { AnimatedSection, AnimatedCard, EmojiRenderer } from "./animation-helpers";
+import { AnimatedSection, AnimatedCard } from "./animation-helpers";
+import { scrollToSection } from "@/lib/utils";
 
 const services = [
 	{
@@ -57,7 +58,7 @@ export function Services() {
 					variant="outline"
 					className="border-primary/30 bg-primary/5 px-3 py-1 text-xs sm:px-4 sm:py-1.5 sm:text-sm"
 				>
-					<EmojiRenderer emoji="⚖️" />
+					<Scale className="mr-1.5 size-3" />
 					Estrutura de atuação
 				</Badge>
 				<Title as="h2" id="servicos-title" size="lg" className="font-heading">
@@ -73,9 +74,7 @@ export function Services() {
 				{services.map((service, idx) => (
 					<AnimatedCard key={service.title} delay={idx * 0.1}>
 						<Card className="group relative overflow-hidden border-border/60 bg-card h-full transition-all hover:shadow-lg hover:border-primary/30">
-							<div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-slate-500 via-slate-400 to-slate-500 opacity-50" />
-							<div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
-							<CardHeader className="space-y-4 pb-3 sm:space-y-5 sm:pb-4">
+						<CardHeader className="space-y-4 pb-3 sm:space-y-5 sm:pb-4">
 								<div className="flex items-start justify-between">
 									<div className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-500/20 sm:h-12 sm:w-12 sm:rounded-2xl">
 										<service.icon className="size-5 text-slate-600 sm:size-6 sm:text-slate-600" />
@@ -120,9 +119,9 @@ export function Services() {
 					Veja também
 				</Text>
 				<div className="flex flex-wrap gap-4 text-sm">
-					<a href="#areas" className="text-primary hover:underline">Áreas prioritárias</a>
-					<a href="#ensaios" className="text-primary hover:underline">Ensaios técnicos</a>
-					<a href="#contato" className="text-primary hover:underline">Solicitar atendimento</a>
+					<a href="#areas" className="text-primary hover:underline" onClick={(e) => scrollToSection(e, "areas")}>Áreas prioritárias</a>
+					<a href="#ensaios" className="text-primary hover:underline" onClick={(e) => scrollToSection(e, "ensaios")}>Ensaios técnicos</a>
+					<a href="#contato" className="text-primary hover:underline" onClick={(e) => scrollToSection(e, "contato")}>Solicitar atendimento</a>
 				</div>
 			</nav>
 		</AnimatedSection>

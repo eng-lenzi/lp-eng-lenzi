@@ -1,4 +1,4 @@
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, Target } from "lucide-react";
 
 import { Text, Title } from "@/components/typography";
 import { Badge } from "@/components/ui/badge";
@@ -6,16 +6,26 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import {
 	AnimatedCard,
 	AnimatedSection,
-	ElevatorDiagram,
-	EmojiRenderer,
-	PressureVesselDiagram,
 } from "./animation-helpers";
+import { scrollToSection } from "@/lib/utils";
+
+function AreaIcon({ src, alt }: { src: string; alt: string }) {
+	return (
+		<img
+			src={src}
+			alt={alt}
+			className="h-full w-full rounded-lg border border-border/30 object-contain p-1"
+			loading="lazy"
+		/>
+	);
+}
 
 const focusAreas: Array<{
 	title: string;
 	description: string;
 	items: string[];
-	icon: React.ComponentType<{ className?: string }>;
+	iconSrc: string;
+	iconAlt: string;
 	gradient: string;
 	bgGradient: string;
 }> = [
@@ -31,7 +41,8 @@ const focusAreas: Array<{
 			"Avaliação de contratos de manutenção",
 			"Determinação de causa raiz",
 		],
-		icon: ElevatorDiagram,
+		iconSrc: "/lp-elevador.webp",
+		iconAlt: "Diagrama técnico de elevador",
 		gradient: "from-blue-500 via-blue-400 to-cyan-400",
 		bgGradient: "from-blue-500/10 via-blue-400/5 to-transparent",
 	},
@@ -47,9 +58,10 @@ const focusAreas: Array<{
 			"Análise de histórico operacional",
 			"Laudos para processos judiciais",
 		],
-		icon: PressureVesselDiagram,
-		gradient: "from-orange-500 via-red-400 to-amber-400",
-		bgGradient: "from-orange-500/10 via-red-400/5 to-transparent",
+		iconSrc: "/lp-caldeira.webp",
+		iconAlt: "Diagrama técnico de caldeira",
+		gradient: "from-blue-500 via-blue-400 to-cyan-400",
+		bgGradient: "from-blue-500/10 via-blue-400/5 to-transparent",
 	},
 ] as const;
 
@@ -66,7 +78,7 @@ export function Areas() {
 					variant="outline"
 					className="border-primary/30 bg-primary/5 px-3 py-1 text-xs sm:px-4 sm:py-1.5 sm:text-sm"
 				>
-					<EmojiRenderer emoji="🎯" />
+					<Target className="mr-1.5 size-3" />
 					Foco técnico
 				</Badge>
 				<Title as="h2" id="areas-title" size="lg" className="font-heading">
@@ -83,17 +95,14 @@ export function Areas() {
 					<AnimatedCard key={area.title} delay={idx * 0.15}>
 						<Card className="group relative overflow-hidden border-border/60 bg-card h-full transition-all hover:shadow-lg hover:border-primary/30">
 							<div
-								className={`absolute inset-0 bg-gradient-to-br ${area.bgGradient} opacity-0 transition-opacity group-hover:opacity-100`}
-							/>
-							<div
 								className={`absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r ${area.gradient}`}
 							/>
 							<CardHeader className="space-y-3 sm:space-y-5">
 								<div className="flex items-start gap-3 sm:gap-5">
 									<div
-										className={`flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-md bg-gradient-to-br ${area.gradient}/10 `}
+										className="flex aspect-square h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-lg"
 									>
-										<area.icon className="size-10 sm:size-12" />
+										<AreaIcon src={area.iconSrc} alt={area.iconAlt} />
 									</div>
 									<div className="space-y-1 pt-1">
 										<Title as="h3" size="lg" className="font-heading">
@@ -109,8 +118,8 @@ export function Areas() {
 								<div className="h-px bg-border/60" />
 								<ul className="space-y-3">
 									{area.items.map((item) => (
-										<li key={item} className="flex items-start gap-3">
-											<div className="mt-1.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/10">
+										<li key={item} className="flex items-center gap-3">
+											<div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/10">
 												<ChevronRight className="size-3 text-primary" />
 											</div>
 											<Text size="sm" tone="subtle">
@@ -128,9 +137,9 @@ export function Areas() {
 			<nav aria-label="Links internos de áreas" className="mt-8 rounded-lg border border-border/60 bg-muted/30 p-4">
 				<Text size="xs" tone="muted" className="mb-2 uppercase tracking-wide">Veja também</Text>
 				<div className="flex flex-wrap gap-4 text-sm">
-					<a href="#servicos" className="text-primary hover:underline">Serviços periciais</a>
-					<a href="#ensaios" className="text-primary hover:underline">Ensaios aplicados</a>
-					<a href="#credenciais" className="text-primary hover:underline">Credenciais</a>
+					<a href="#servicos" className="text-primary hover:underline" onClick={(e) => scrollToSection(e, "servicos")}>Serviços periciais</a>
+					<a href="#ensaios" className="text-primary hover:underline" onClick={(e) => scrollToSection(e, "ensaios")}>Ensaios aplicados</a>
+					<a href="#credenciais" className="text-primary hover:underline" onClick={(e) => scrollToSection(e, "credenciais")}>Credenciais</a>
 				</div>
 			</nav>
 		</AnimatedSection>

@@ -1,9 +1,10 @@
-import { Award, Factory, Truck, CheckCircle2 } from "lucide-react";
+import { Award, Factory, Truck, CheckCircle2, Briefcase } from "lucide-react";
 
 import { Text, Title } from "@/components/typography";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { AnimatedSection, AnimatedCard, EmojiRenderer } from "./animation-helpers";
+import { AnimatedSection, AnimatedCard } from "./animation-helpers";
+import { scrollToSection } from "@/lib/utils";
 
 const otherAreas = [
 	{
@@ -46,7 +47,7 @@ export function OtherAreas() {
 					variant="outline"
 					className="border-primary/30 bg-primary/5 px-3 py-1 text-xs sm:px-4 sm:py-1.5 sm:text-sm"
 				>
-					<EmojiRenderer emoji="💼" />
+					<Briefcase className="mr-1.5 size-3" />
 					Atuação complementar
 				</Badge>
 				<Title as="h2" id="outras-areas-title" size="lg" className="font-heading">
@@ -88,9 +89,9 @@ export function OtherAreas() {
 			<nav aria-label="Links internos de áreas complementares" className="mt-8 rounded-lg border border-border/60 bg-muted/30 p-4">
 				<Text size="xs" tone="muted" className="mb-2 uppercase tracking-wide">Veja também</Text>
 				<div className="flex flex-wrap gap-4 text-sm">
-					<a href="#servicos" className="text-primary hover:underline">Serviços principais</a>
-					<a href="#ensaios" className="text-primary hover:underline">Ensaios mecânicos</a>
-					<a href="#contato" className="text-primary hover:underline">Solicitar análise</a>
+					<a href="#servicos" className="text-primary hover:underline" onClick={(e) => scrollToSection(e, "servicos")}>Serviços principais</a>
+					<a href="#ensaios" className="text-primary hover:underline" onClick={(e) => scrollToSection(e, "ensaios")}>Ensaios mecânicos</a>
+					<a href="#contato" className="text-primary hover:underline" onClick={(e) => scrollToSection(e, "contato")}>Solicitar análise</a>
 				</div>
 			</nav>
 		</AnimatedSection>
