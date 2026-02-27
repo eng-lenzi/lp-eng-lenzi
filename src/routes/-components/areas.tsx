@@ -136,10 +136,19 @@ export function Areas() {
 
 			<nav aria-label="Links internos de áreas" className="mt-8 rounded-lg border border-border/60 bg-muted/30 p-4">
 				<Text size="xs" tone="muted" className="mb-2 uppercase tracking-wide">Veja também</Text>
-				<div className="flex flex-wrap gap-4 text-sm">
-					<a href="#servicos" className="text-primary hover:underline" onClick={(e) => scrollToSection(e, "servicos")}>Serviços periciais</a>
-					<a href="#ensaios" className="text-primary hover:underline" onClick={(e) => scrollToSection(e, "ensaios")}>Ensaios aplicados</a>
-					<a href="#credenciais" className="text-primary hover:underline" onClick={(e) => scrollToSection(e, "credenciais")}>Credenciais</a>
+				<div className="flex flex-col sm:flex-row sm:flex-wrap gap-1 text-sm">
+					<a href="#servicos" className="flex items-center justify-between py-2 text-primary hover:underline sm:py-0 sm:gap-4" onClick={(e) => scrollToSection(e, "servicos")}>
+						<span>Serviços periciais</span>
+						<ChevronRight className="size-4 sm:hidden" />
+					</a>
+					<a href="#ensaios" className="flex items-center justify-between py-2 text-primary hover:underline sm:py-0 sm:gap-4" onClick={(e) => scrollToSection(e, "ensaios")}>
+						<span>Ensaios aplicados</span>
+						<ChevronRight className="size-4 sm:hidden" />
+					</a>
+					<a href="#credenciais" className="flex items-center justify-between py-2 text-primary hover:underline sm:py-0 sm:gap-4" onClick={(e) => scrollToSection(e, "credenciais")}>
+						<span>Credenciais</span>
+						<ChevronRight className="size-4 sm:hidden" />
+					</a>
 				</div>
 			</nav>
 		</AnimatedSection>

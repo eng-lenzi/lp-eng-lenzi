@@ -1,4 +1,4 @@
-import { Gavel, Scale, FileCheck2, CheckCircle2 } from "lucide-react";
+import { Gavel, Scale, FileCheck2, CheckCircle2, ChevronRight } from "lucide-react";
 
 import { Text, Title } from "@/components/typography";
 import { Badge } from "@/components/ui/badge";
@@ -10,7 +10,7 @@ const services = [
 	{
 		title: "Perito Judicial",
 		description:
-			"Nomeação judicial em processos cíveis e trabalhistas. Laudos técnicos com rigor metodológico e fundamentação normativa.",
+			"Nomeação judicial em processos cíveis. Laudos técnicos com rigor metodológico e fundamentação normativa.",
 		features: [
 			"Análise técnica de equipamentos e sistemas",
 			"Investigação de causa raiz",
@@ -118,10 +118,19 @@ export function Services() {
 				<Text size="xs" tone="muted" className="mb-2 uppercase tracking-wide">
 					Veja também
 				</Text>
-				<div className="flex flex-wrap gap-4 text-sm">
-					<a href="#areas" className="text-primary hover:underline" onClick={(e) => scrollToSection(e, "areas")}>Áreas prioritárias</a>
-					<a href="#ensaios" className="text-primary hover:underline" onClick={(e) => scrollToSection(e, "ensaios")}>Ensaios técnicos</a>
-					<a href="#contato" className="text-primary hover:underline" onClick={(e) => scrollToSection(e, "contato")}>Solicitar atendimento</a>
+				<div className="flex flex-col sm:flex-row sm:flex-wrap gap-1 text-sm">
+					<a href="#areas" className="flex items-center justify-between py-2 text-primary hover:underline sm:py-0 sm:gap-4" onClick={(e) => scrollToSection(e, "areas")}>
+						<span>Áreas prioritárias</span>
+						<ChevronRight className="size-4 sm:hidden" />
+					</a>
+					<a href="#ensaios" className="flex items-center justify-between py-2 text-primary hover:underline sm:py-0 sm:gap-4" onClick={(e) => scrollToSection(e, "ensaios")}>
+						<span>Ensaios técnicos</span>
+						<ChevronRight className="size-4 sm:hidden" />
+					</a>
+					<a href="#contato" className="flex items-center justify-between py-2 text-primary hover:underline sm:py-0 sm:gap-4" onClick={(e) => scrollToSection(e, "contato")}>
+						<span>Solicitar atendimento</span>
+						<ChevronRight className="size-4 sm:hidden" />
+					</a>
 				</div>
 			</nav>
 		</AnimatedSection>

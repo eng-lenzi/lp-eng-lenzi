@@ -1,4 +1,4 @@
-import { Award, Factory, Truck, CheckCircle2, Briefcase } from "lucide-react";
+import { Award, Factory, Truck, CheckCircle2, Briefcase, ChevronRight } from "lucide-react";
 
 import { Text, Title } from "@/components/typography";
 import { Badge } from "@/components/ui/badge";
@@ -88,10 +88,19 @@ export function OtherAreas() {
 
 			<nav aria-label="Links internos de áreas complementares" className="mt-8 rounded-lg border border-border/60 bg-muted/30 p-4">
 				<Text size="xs" tone="muted" className="mb-2 uppercase tracking-wide">Veja também</Text>
-				<div className="flex flex-wrap gap-4 text-sm">
-					<a href="#servicos" className="text-primary hover:underline" onClick={(e) => scrollToSection(e, "servicos")}>Serviços principais</a>
-					<a href="#ensaios" className="text-primary hover:underline" onClick={(e) => scrollToSection(e, "ensaios")}>Ensaios mecânicos</a>
-					<a href="#contato" className="text-primary hover:underline" onClick={(e) => scrollToSection(e, "contato")}>Solicitar análise</a>
+				<div className="flex flex-col sm:flex-row sm:flex-wrap gap-1 text-sm">
+					<a href="#servicos" className="flex items-center justify-between py-2 text-primary hover:underline sm:py-0 sm:gap-4" onClick={(e) => scrollToSection(e, "servicos")}>
+						<span>Serviços principais</span>
+						<ChevronRight className="size-4 sm:hidden" />
+					</a>
+					<a href="#ensaios" className="flex items-center justify-between py-2 text-primary hover:underline sm:py-0 sm:gap-4" onClick={(e) => scrollToSection(e, "ensaios")}>
+						<span>Ensaios mecânicos</span>
+						<ChevronRight className="size-4 sm:hidden" />
+					</a>
+					<a href="#contato" className="flex items-center justify-between py-2 text-primary hover:underline sm:py-0 sm:gap-4" onClick={(e) => scrollToSection(e, "contato")}>
+						<span>Solicitar análise</span>
+						<ChevronRight className="size-4 sm:hidden" />
+					</a>
 				</div>
 			</nav>
 		</AnimatedSection>
