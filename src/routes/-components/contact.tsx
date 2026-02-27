@@ -36,7 +36,7 @@ export function Contact() {
 								transition={{ duration: 0.3, delay: 0.3 }}
 								className="flex items-center gap-4 sm:gap-5"
 							>
-								<div className="flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center overflow-hidden rounded-xl sm:rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 shadow-lg">
+								<div className="flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center overflow-hidden rounded-xl sm:rounded-2xl">
 									<img
 										src="/brand/logo.svg"
 										alt=""

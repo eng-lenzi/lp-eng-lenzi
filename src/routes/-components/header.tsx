@@ -10,11 +10,17 @@ import { Phone } from "lucide-react";
 
 const menuItems = [
 	{ label: "Início", href: "#inicio" },
-	{ label: "Arquitetura", href: "#hub-conteudo" },
 	{ label: "Serviços", href: "#servicos" },
 	{ label: "Áreas", href: "#areas" },
 	{ label: "Ensaios", href: "#ensaios" },
 	{ label: "Satélites", href: "#outras-areas" },
+	{ label: "Credenciais", href: "#credenciais" },
+	{ label: "Contato", href: "#contato" },
+] as const;
+
+const desktopMenuItems = [
+	{ label: "Início", href: "#inicio" },
+	{ label: "Serviços", href: "#servicos" },
 	{ label: "Credenciais", href: "#credenciais" },
 	{ label: "Contato", href: "#contato" },
 ] as const;
@@ -133,7 +139,7 @@ export function Header({ mobileMenuOpen, setMobileMenuOpen }: HeaderProps) {
 					</button>
 
 					<nav className="hidden items-center gap-1 lg:flex">
-						{menuItems.map((item, idx) => (
+						{desktopMenuItems.map((item, idx) => (
 							<motion.a
 								key={item.label}
 								href={item.href}
