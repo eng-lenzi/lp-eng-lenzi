@@ -1,5 +1,6 @@
 import { Outlet, createRootRouteWithContext } from "@tanstack/react-router";
 import type { QueryClient } from "@tanstack/react-query";
+import { Analytics } from "@vercel/analytics/next";
 
 import { ErrorBoundary } from "@/components/error-boundary";
 import { useThemeStore } from "@/stores/theme";
@@ -19,6 +20,7 @@ function RootComponent() {
     <div className={theme}>
       <ErrorBoundary>
         <Outlet />
+        <Analytics />
       </ErrorBoundary>
     </div>
   );
