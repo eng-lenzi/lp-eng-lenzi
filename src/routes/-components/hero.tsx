@@ -176,7 +176,14 @@ export function Hero() {
 									<div className="relative rounded-2xl bg-card p-1.5 shadow-2xl sm:p-2">
 										<div className="relative overflow-hidden rounded-xl">
 											<img
-												src="/profile_fernando_lenzi.webp"
+												src="/profile_fernando_lenzi-1200.webp"
+												srcSet="/profile_fernando_lenzi-1200.webp 1200w, /profile_fernando_lenzi.webp 4912w"
+												sizes="(max-width: 640px) 280px, (max-width: 1024px) 384px, 420px"
+												width={1200}
+												height={1798}
+												loading="eager"
+												decoding="async"
+												fetchPriority="high"
 												alt="Fernando Lenzi - Engenheiro Mecânico"
 												className="w-full aspect-[3/4] object-cover object-top"
 											/>

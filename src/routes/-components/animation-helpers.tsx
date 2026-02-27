@@ -1,4 +1,4 @@
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useReducedMotion } from "framer-motion";
 import { useEffect, useId, useRef, useState } from "react";
 
 export function AnimatedSection({
@@ -14,14 +14,21 @@ export function AnimatedSection({
 }) {
 	const ref = useRef(null);
 	const isInView = useInView(ref, { once: true, margin: "-100px" });
+	const reduceMotion = useReducedMotion();
 
 	return (
 		<motion.div
 			ref={ref}
 			id={id}
-			initial={{ opacity: 0, y: 40 }}
-			animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
-			transition={{ duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] }}
+			initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 40 }}
+			animate={
+				reduceMotion
+					? { opacity: 1 }
+					: isInView
+						? { opacity: 1, y: 0 }
+						: { opacity: 0, y: 40 }
+			}
+			transition={reduceMotion ? { duration: 0 } : { duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] }}
 			className={className}
 		>
 			{children}
@@ -40,17 +47,20 @@ export function AnimatedCard({
 }) {
 	const ref = useRef(null);
 	const isInView = useInView(ref, { once: true, margin: "-50px" });
+	const reduceMotion = useReducedMotion();
 
 	return (
 		<motion.div
 			ref={ref}
-			initial={{ opacity: 0, y: 30, scale: 0.95 }}
+			initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 30, scale: 0.95 }}
 			animate={
-				isInView
-					? { opacity: 1, y: 0, scale: 1 }
-					: { opacity: 0, y: 30, scale: 0.95 }
+				reduceMotion
+					? { opacity: 1 }
+					: isInView
+						? { opacity: 1, y: 0, scale: 1 }
+						: { opacity: 0, y: 30, scale: 0.95 }
 			}
-			transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
+			transition={reduceMotion ? { duration: 0 } : { duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
 			className={className}
 		>
 			{children}
@@ -68,8 +78,14 @@ export function AnimatedNumber({
 	const [displayValue, setDisplayValue] = useState(value);
 	const ref = useRef(null);
 	const isInView = useInView(ref, { once: true });
+	const reduceMotion = useReducedMotion();
 
 	useEffect(() => {
+		if (reduceMotion) {
+			setDisplayValue(value);
+			return;
+		}
+
 		if (!isInView) return;
 
 		const numValue = parseInt(value.replaceAll(/\D/g, ""), 10);
@@ -94,7 +110,7 @@ export function AnimatedNumber({
 		}, duration / steps);
 
 		return () => clearInterval(timer);
-	}, [isInView, value]);
+	}, [isInView, value, reduceMotion]);
 
 	return (
 		<span ref={ref}>
@@ -113,13 +129,15 @@ export function FloatingElement({
 	className?: string;
 	style?: React.CSSProperties;
 }) {
+	const reduceMotion = useReducedMotion();
+
 	return (
 		<motion.div
-			animate={{
+			animate={reduceMotion ? undefined : {
 				y: [0, -10, 0],
 				rotate: [0, 2, 0],
 			}}
-			transition={{
+			transition={reduceMotion ? undefined : {
 				duration: 4,
 				repeat: Infinity,
 				ease: "easeInOut",
@@ -139,6 +157,7 @@ export function GlowingOrb({
 	className?: string;
 	color?: "primary" | "blue" | "orange" | "emerald";
 }) {
+	const reduceMotion = useReducedMotion();
 	const colors = {
 		primary: "bg-primary/20",
 		blue: "bg-blue-500/20",
@@ -148,11 +167,11 @@ export function GlowingOrb({
 
 	return (
 		<motion.div
-			animate={{
+			animate={reduceMotion ? undefined : {
 				scale: [1, 1.2, 1],
 				opacity: [0.3, 0.5, 0.3],
 			}}
-			transition={{
+			transition={reduceMotion ? undefined : {
 				duration: 3,
 				repeat: Infinity,
 				ease: "easeInOut",
@@ -164,6 +183,7 @@ export function GlowingOrb({
 
 export function HeroParticles() {
 	const baseId = useId();
+	const reduceMotion = useReducedMotion();
 	const particleKeys = [
 		"a",
 		"b",
@@ -181,6 +201,10 @@ export function HeroParticles() {
 		"n",
 		"o",
 	];
+
+	if (reduceMotion) {
+		return null;
+	}
 
 	return (
 		<div className="pointer-events-none absolute inset-0 overflow-hidden">
