@@ -29,10 +29,10 @@ export function Hero() {
 
 	const { scrollYProgress } = useScroll({
 		target: heroRef,
-		offset: ["start end", "end start"],
+		offset: ["start start", "end end"],
 	});
 
-	const logoY = useTransform(scrollYProgress, [0, 1], [50, -50]);
+	const logoY = useTransform(scrollYProgress, [0, 1], [30, -30]);
 
 	return (
 		<section
@@ -44,7 +44,7 @@ export function Hero() {
 
 			<motion.div
 				style={{ y: logoY }}
-				className="absolute inset-0 pointer-events-none flex items-center justify-center opacity-[0.06] lg:opacity-10"
+				className="absolute inset-0 pointer-events-none flex items-center justify-center opacity-15"
 			>
 				<img
 					src="/brand/logo.svg"
