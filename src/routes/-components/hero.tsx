@@ -2,9 +2,9 @@ import { motion, useInView } from "framer-motion";
 import {
 	CheckCircle2,
 	ChevronRight,
+	Cog,
 	Phone,
 	ShieldCheck,
-	Zap,
 } from "lucide-react";
 import { useRef } from "react";
 
@@ -14,9 +14,6 @@ import { Button } from "@/components/ui/button";
 import {
 	AnimatedNumber,
 	AnimatedSection,
-	FloatingElement,
-	GlowingOrb,
-	HeroParticles,
 } from "./animation-helpers";
 
 const stats = [
@@ -37,9 +34,6 @@ export function Hero() {
 			aria-labelledby="hero-title"
 			className="relative pt-8 pb-8 sm:pt-16 sm:pb-10 lg:py-20"
 		>
-			<HeroParticles />
-			<GlowingOrb className="left-[-10%] top-[20%] h-96 w-96" />
-			<GlowingOrb className="right-[-5%] bottom-[20%] h-64 w-64" color="blue" />
 
 			<div className="grid gap-10 lg:grid-cols-[1.15fr_1fr] lg:gap-16">
 				<div className="relative z-10 space-y-8 lg:space-y-10">
@@ -48,7 +42,7 @@ export function Hero() {
 							variant="outline"
 							className="border-primary/30 bg-primary/5 px-3 py-1 text-sm sm:px-4 sm:py-1.5"
 						>
-							<Zap className="mr-1.5 size-3" />
+							<Cog className="mr-1.5 size-3" />
 							Perícia Judicial e Assistência Técnica
 						</Badge>
 					</AnimatedSection>
@@ -61,7 +55,7 @@ export function Hero() {
 							className="font-heading text-3xl sm:text-4xl lg:text-[3.5rem] leading-[1.1]"
 						>
 							Perito em{" "}
-							<span className="bg-gradient-to-r from-primary via-primary/80 to-blue-500 bg-clip-text text-transparent">
+							<span className="bg-gradient-to-r from-primary via-[#008b91] to-[#33b6bb] bg-clip-text text-transparent">
 								engenharia mecânica
 							</span>
                                           {" "}aplicada à prova técnica.
@@ -117,9 +111,9 @@ export function Hero() {
 							{stats.map((stat, idx) => (
 								<motion.div
 									key={stat.label}
-									initial={{ opacity: 0, y: 20 }}
-									animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
-									transition={{ delay: 0.6 + idx * 0.1 }}
+									initial={{ opacity: 0 }}
+									animate={isHeroInView ? { opacity: 1 } : {}}
+									transition={{ delay: 0.6 + idx * 0.1, duration: 0.3 }}
 									className="space-y-1"
 								>
 									<Text className="text-xl sm:text-2xl lg:text-4xl font-bold bg-gradient-to-br from-foreground to-foreground/70 bg-clip-text text-transparent">
@@ -136,45 +130,38 @@ export function Hero() {
 
 				<div className="relative lg:block">
 					<motion.div
-						initial={{ opacity: 0, scale: 0.9, rotate: -2 }}
-						animate={isHeroInView ? { opacity: 1, scale: 1, rotate: 0 } : {}}
-						transition={{ duration: 0.8, delay: 0.3 }}
+						initial={{ opacity: 0 }}
+						animate={isHeroInView ? { opacity: 1 } : {}}
+						transition={{ duration: 0.4, delay: 0.3 }}
 						className="relative h-full"
 					>
-						<FloatingElement className="absolute -right-2 top-[15%] z-10 sm:right-0 sm:top-1/4">
-							<motion.div
-								initial={{ opacity: 0, x: 20 }}
-								animate={isHeroInView ? { opacity: 1, x: 0 } : {}}
-								transition={{ delay: 0.8, duration: 0.5 }}
-								className="rounded-xl bg-card p-2 shadow-xl sm:p-3"
-							>
-								<div className="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-500/10 sm:h-10 sm:w-10">
-									<CheckCircle2 className="size-4 text-emerald-600 sm:size-5" />
-								</div>
-							</motion.div>
-						</FloatingElement>
-
-						<FloatingElement
-							className="absolute -left-2 bottom-[20%] z-10 sm:left-0 sm:bottom-1/3"
-							style={{ animationDelay: "1s" }}
+						<motion.div
+							initial={{ opacity: 0, x: 20 }}
+							animate={isHeroInView ? { opacity: 1, x: 0 } : {}}
+							transition={{ delay: 0.8, duration: 0.3 }}
+							className="absolute -right-2 top-[15%] z-10 rounded-xl bg-card p-2 shadow-xl sm:right-0 sm:top-1/4 sm:p-3"
 						>
-							<motion.div
-								initial={{ opacity: 0, x: -20 }}
-								animate={isHeroInView ? { opacity: 1, x: 0 } : {}}
-								transition={{ delay: 1, duration: 0.5 }}
-								className="rounded-xl bg-card p-2 shadow-xl sm:p-3"
-							>
-								<div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-500/10 sm:h-10 sm:w-10">
-									<ShieldCheck className="size-4 text-blue-600 sm:size-5" />
-								</div>
-							</motion.div>
-						</FloatingElement>
+							<div className="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-500/10 sm:h-10 sm:w-10">
+								<CheckCircle2 className="size-4 text-emerald-600 sm:size-5" />
+							</div>
+						</motion.div>
+
+						<motion.div
+							initial={{ opacity: 0, x: -20 }}
+							animate={isHeroInView ? { opacity: 1, x: 0 } : {}}
+							transition={{ delay: 1, duration: 0.3 }}
+							className="absolute -left-2 bottom-[20%] z-10 rounded-xl bg-card p-2 shadow-xl sm:left-0 sm:bottom-1/3 sm:p-3"
+						>
+							<div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-500/10 sm:h-10 sm:w-10">
+								<ShieldCheck className="size-4 text-amber-600 sm:size-5" />
+							</div>
+						</motion.div>
 
 						<div className="relative h-full flex items-center justify-center">
 							<div className="relative w-full max-w-[280px] sm:max-w-sm">
 								<motion.div
-									initial={{ opacity: 0, scale: 0.9 }}
-									animate={isHeroInView ? { opacity: 1, scale: 1 } : {}}
+									initial={{ opacity: 0 }}
+									animate={isHeroInView ? { opacity: 1 } : {}}
 									transition={{ delay: 0.6, duration: 0.6 }}
 									className="relative"
 								>
