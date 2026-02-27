@@ -60,6 +60,52 @@ async function buildCss() {
 function startServer() {
   let port = preferredPort;
 
+  const contentTypes: Record<string, string> = {
+    ".jpg": "image/jpeg",
+    ".jpeg": "image/jpeg",
+    ".png": "image/png",
+    ".webp": "image/webp",
+    ".gif": "image/gif",
+    ".svg": "image/svg+xml",
+  };
+
+  async function handleStatic(req: Request): Promise<Response | null> {
+    const url = new URL(req.url);
+    const pathname = url.pathname;
+
+    if (pathname === "/main.js") {
+      return new Response(await buildMainJs(), {
+        headers: {
+          "Content-Type": "application/javascript; charset=utf-8",
+          "Cache-Control": "no-store",
+        },
+      });
+    }
+
+    if (pathname === "/index.css") {
+      return new Response(await buildCss(), {
+        headers: {
+          "Content-Type": "text/css; charset=utf-8",
+          "Cache-Control": "no-store",
+        },
+      });
+    }
+
+    const filePath = path.join(process.cwd(), "public", pathname);
+    const file = Bun.file(filePath);
+    if (await file.exists()) {
+      const ext = path.extname(pathname).toLowerCase();
+      return new Response(file, {
+        headers: {
+          "Content-Type": contentTypes[ext] || "application/octet-stream",
+          "Cache-Control": "no-store",
+        },
+      });
+    }
+
+    return null;
+  }
+
   while (true) {
     try {
       return Bun.serve({
@@ -69,47 +115,10 @@ function startServer() {
           hmr: true,
           console: true,
         },
-        routes: {
-          "/main.js": async () =>
-            new Response(await buildMainJs(), {
-              headers: {
-                "Content-Type": "application/javascript; charset=utf-8",
-                "Cache-Control": "no-store",
-              },
-            }),
-          "/index.css": async () =>
-            new Response(await buildCss(), {
-              headers: {
-                "Content-Type": "text/css; charset=utf-8",
-                "Cache-Control": "no-store",
-              },
-            }),
-          "/:filename": async (req) => {
-            const url = new URL(req.url);
-            const filename = url.pathname;
-            const filePath = path.join(process.cwd(), "public", filename);
-            const file = Bun.file(filePath);
-            if (await file.exists()) {
-              const ext = path.extname(filename).toLowerCase();
-              const contentTypes: Record<string, string> = {
-                ".jpg": "image/jpeg",
-                ".jpeg": "image/jpeg",
-                ".png": "image/png",
-                ".webp": "image/webp",
-                ".gif": "image/gif",
-                ".svg": "image/svg+xml",
-              };
-              return new Response(file, {
-                headers: {
-                  "Content-Type": contentTypes[ext] || "application/octet-stream",
-                  "Cache-Control": "no-store",
-                },
-              });
-            }
-            return new Response("Not found", { status: 404 });
-          },
-        },
-        fetch() {
+        async fetch(req) {
+          const staticResponse = await handleStatic(req);
+          if (staticResponse) return staticResponse;
+
           return new Response(indexHtml, {
             headers: {
               "Content-Type": "text/html; charset=utf-8",
