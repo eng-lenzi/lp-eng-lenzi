@@ -60,7 +60,7 @@ export function Footer() {
 								<a
 									key={item.label}
 									href={item.href}
-									className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+									className="text-sm text-muted-foreground hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm"
 								>
 									{item.label}
 								</a>

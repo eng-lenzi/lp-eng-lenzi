@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronRight, Menu, X } from "lucide-react";
+import { useEffect } from "react";
 
 import { Text } from "@/components/typography";
 import { Button } from "@/components/ui/button";
@@ -55,7 +56,7 @@ function MobileMenu({
 									initial={{ opacity: 0, x: 20 }}
 									animate={{ opacity: 1, x: 0 }}
 									transition={{ delay: idx * 0.05 }}
-									className="flex items-center justify-between rounded-xl px-4 py-4 text-lg font-medium transition-colors hover:bg-primary/10 hover:pl-6"
+									className="flex items-center justify-between rounded-xl px-4 py-4 text-lg font-medium transition-colors hover:bg-primary/10 hover:pl-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
 								>
 									{item.label}
 									<ChevronRight className="size-5 text-muted-foreground" />
@@ -80,6 +81,17 @@ type HeaderProps = {
 };
 
 export function Header({ mobileMenuOpen, setMobileMenuOpen }: HeaderProps) {
+	useEffect(() => {
+		function handleResize() {
+			if (window.innerWidth >= 1024) {
+				setMobileMenuOpen(false);
+			}
+		}
+
+		window.addEventListener("resize", handleResize);
+		return () => window.removeEventListener("resize", handleResize);
+	}, [setMobileMenuOpen]);
+
 	const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
 		e.preventDefault();
 		const element = document.querySelector(`#${id}`);
@@ -131,7 +143,7 @@ export function Header({ mobileMenuOpen, setMobileMenuOpen }: HeaderProps) {
 								initial={{ opacity: 0, y: -10 }}
 								animate={{ opacity: 1, y: 0 }}
 								transition={{ delay: idx * 0.05 }}
-								className="rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+								className="rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
 							>
 								{item.label}
 							</motion.a>
@@ -147,9 +159,11 @@ export function Header({ mobileMenuOpen, setMobileMenuOpen }: HeaderProps) {
 							</a>
 						</Button>
 						<Button
+							type="button"
 							variant="ghost"
 							size="icon"
 							className="lg:hidden"
+							aria-label={mobileMenuOpen ? "Fechar menu" : "Abrir menu"}
 							onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
 						>
 							{mobileMenuOpen ? <X className="size-6" /> : <Menu className="size-6" />}
