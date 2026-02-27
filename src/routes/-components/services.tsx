@@ -50,7 +50,7 @@ export function Services() {
 		<AnimatedSection
 			id="servicos"
 			aria-labelledby="servicos-title"
-			className="border-t py-12 sm:py-16 lg:py-24"
+			className="py-12 sm:py-16 lg:py-24"
 			delay={0.1}
 		>
 			<div className="space-y-3 mb-8 sm:space-y-4 sm:mb-10 lg:mb-14">
