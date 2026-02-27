@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://lp-eng-lenzi.vercel.app/sitemap.xml

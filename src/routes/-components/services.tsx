@@ -46,7 +46,12 @@ const services = [
 
 export function Services() {
 	return (
-		<AnimatedSection id="servicos" className="border-t py-12 sm:py-16 lg:py-24" delay={0.1}>
+		<AnimatedSection
+			id="servicos"
+			aria-labelledby="servicos-title"
+			className="border-t py-12 sm:py-16 lg:py-24"
+			delay={0.1}
+		>
 			<div className="space-y-3 mb-8 sm:space-y-4 sm:mb-10 lg:mb-14">
 				<Badge
 					variant="outline"
@@ -55,7 +60,7 @@ export function Services() {
 					<EmojiRenderer emoji="⚖️" />
 					Estrutura de atuação
 				</Badge>
-				<Title size="lg" className="font-heading">
+				<Title as="h2" id="servicos-title" size="lg" className="font-heading">
 					Serviços periciais para cada etapa do processo
 				</Title>
 				<Text tone="subtle" className="max-w-2xl text-sm sm:text-base">
@@ -84,7 +89,7 @@ export function Services() {
 									</Badge>
 								</div>
 								<div className="space-y-2">
-									<Title size="md" className="font-heading">
+									<Title as="h3" size="md" className="font-heading">
 										{service.title}
 									</Title>
 									<Text size="sm" tone="subtle" className="leading-relaxed">
@@ -109,6 +114,17 @@ export function Services() {
 					</AnimatedCard>
 				))}
 			</div>
+
+			<nav aria-label="Links internos de serviços" className="mt-8 rounded-lg border border-border/60 bg-muted/30 p-4">
+				<Text size="xs" tone="muted" className="mb-2 uppercase tracking-wide">
+					Veja também
+				</Text>
+				<div className="flex flex-wrap gap-4 text-sm">
+					<a href="#areas" className="text-primary hover:underline">Áreas prioritárias</a>
+					<a href="#ensaios" className="text-primary hover:underline">Ensaios técnicos</a>
+					<a href="#contato" className="text-primary hover:underline">Solicitar atendimento</a>
+				</div>
+			</nav>
 		</AnimatedSection>
 	);
 }

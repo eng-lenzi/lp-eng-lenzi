@@ -88,7 +88,7 @@ export function ContactForm({
   return (
     <Card id={sectionId} variant="outline" className="border-border/60">
       <CardHeader className="space-y-2">
-        <Title size="lg">{title}</Title>
+        <Title as="h3" size="lg">{title}</Title>
         <Text tone="subtle">{description}</Text>
       </CardHeader>
       <CardContent>

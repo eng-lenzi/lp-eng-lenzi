@@ -15,7 +15,7 @@ const credentials = [
 
 export function Credentials() {
 	return (
-		<AnimatedSection id="credenciais" className="border-t py-12 sm:py-16 lg:py-24" delay={0.1}>
+		<AnimatedSection id="credenciais" aria-labelledby="credenciais-title" className="border-t py-12 sm:py-16 lg:py-24" delay={0.1}>
 			<div className="space-y-3 mb-8 sm:space-y-4 sm:mb-10 lg:mb-14">
 				<Badge
 					variant="outline"
@@ -24,7 +24,7 @@ export function Credentials() {
 					<EmojiRenderer emoji="🏆" />
 					Autoridade técnica
 				</Badge>
-				<Title size="lg" className="font-heading">
+				<Title as="h2" id="credenciais-title" size="lg" className="font-heading">
 					Credenciais e experiência profissional
 				</Title>
 				<Text tone="subtle" className="max-w-2xl text-sm sm:text-base">
@@ -76,7 +76,7 @@ export function Credentials() {
 							<ShieldCheck className="size-6 text-amber-600 sm:size-7" />
 						</motion.div>
 						<div className="space-y-3">
-							<Title size="md" className="font-heading">
+							<Title as="h3" size="md" className="font-heading">
 								Atuação técnica dentro de normas e limites legais
 							</Title>
 							<Text size="md" tone="subtle">

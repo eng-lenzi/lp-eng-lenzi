@@ -57,6 +57,7 @@ export function Areas() {
 	return (
 		<AnimatedSection
 			id="areas"
+			aria-labelledby="areas-title"
 			className="border-t py-12 sm:py-16 lg:py-24"
 			delay={0.1}
 		>
@@ -68,7 +69,7 @@ export function Areas() {
 					<EmojiRenderer emoji="🎯" />
 					Foco técnico
 				</Badge>
-				<Title size="lg" className="font-heading">
+				<Title as="h2" id="areas-title" size="lg" className="font-heading">
 					Áreas de atuação prioritárias
 				</Title>
 				<Text tone="subtle" className="max-w-2xl text-sm sm:text-base">
@@ -95,7 +96,7 @@ export function Areas() {
 										<area.icon className="size-10 sm:size-12" />
 									</div>
 									<div className="space-y-1 pt-1">
-										<Title size="lg" className="font-heading">
+										<Title as="h3" size="lg" className="font-heading">
 											{area.title}
 										</Title>
 										<Text size="sm" tone="subtle">
@@ -123,6 +124,15 @@ export function Areas() {
 					</AnimatedCard>
 				))}
 			</div>
+
+			<nav aria-label="Links internos de áreas" className="mt-8 rounded-lg border border-border/60 bg-muted/30 p-4">
+				<Text size="xs" tone="muted" className="mb-2 uppercase tracking-wide">Veja também</Text>
+				<div className="flex flex-wrap gap-4 text-sm">
+					<a href="#servicos" className="text-primary hover:underline">Serviços periciais</a>
+					<a href="#ensaios" className="text-primary hover:underline">Ensaios aplicados</a>
+					<a href="#credenciais" className="text-primary hover:underline">Credenciais</a>
+				</div>
+			</nav>
 		</AnimatedSection>
 	);
 }

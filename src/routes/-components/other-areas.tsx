@@ -40,7 +40,7 @@ const otherAreas = [
 
 export function OtherAreas() {
 	return (
-		<AnimatedSection className="border-t py-12 sm:py-16 lg:py-24" delay={0.1}>
+		<AnimatedSection id="outras-areas" aria-labelledby="outras-areas-title" className="border-t py-12 sm:py-16 lg:py-24" delay={0.1}>
 			<div className="space-y-3 mb-8 sm:space-y-4 sm:mb-10 lg:mb-14">
 				<Badge
 					variant="outline"
@@ -49,7 +49,7 @@ export function OtherAreas() {
 					<EmojiRenderer emoji="💼" />
 					Atuação complementar
 				</Badge>
-				<Title size="lg" className="font-heading">
+				<Title as="h2" id="outras-areas-title" size="lg" className="font-heading">
 					Outras áreas de atuação pericial
 				</Title>
 				<Text tone="subtle" className="max-w-2xl text-sm sm:text-base">
@@ -66,7 +66,7 @@ export function OtherAreas() {
 								<div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 transition-colors group-hover:bg-primary/20">
 									<area.icon className="size-6 text-primary" />
 								</div>
-								<Title size="md" className="font-heading">
+								<Title as="h3" size="md" className="font-heading">
 									{area.title}
 								</Title>
 							</CardHeader>
@@ -84,6 +84,15 @@ export function OtherAreas() {
 					</AnimatedCard>
 				))}
 			</div>
+
+			<nav aria-label="Links internos de áreas complementares" className="mt-8 rounded-lg border border-border/60 bg-muted/30 p-4">
+				<Text size="xs" tone="muted" className="mb-2 uppercase tracking-wide">Veja também</Text>
+				<div className="flex flex-wrap gap-4 text-sm">
+					<a href="#servicos" className="text-primary hover:underline">Serviços principais</a>
+					<a href="#ensaios" className="text-primary hover:underline">Ensaios mecânicos</a>
+					<a href="#contato" className="text-primary hover:underline">Solicitar análise</a>
+				</div>
+			</nav>
 		</AnimatedSection>
 	);
 }

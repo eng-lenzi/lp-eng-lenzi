@@ -37,7 +37,7 @@ const nonDestructiveTests = [
 
 export function MechanicalTests() {
 	return (
-		<AnimatedSection id="ensaios" className="border-t py-12 sm:py-16 lg:py-24" delay={0.1}>
+		<AnimatedSection id="ensaios" aria-labelledby="ensaios-title" className="border-t py-12 sm:py-16 lg:py-24" delay={0.1}>
 			<div className="space-y-3 mb-8 sm:space-y-4 sm:mb-10 lg:mb-14">
 				<Badge
 					variant="outline"
@@ -46,7 +46,7 @@ export function MechanicalTests() {
 					<EmojiRenderer emoji="🔬" />
 					Suporte laboratorial
 				</Badge>
-				<Title size="lg" className="font-heading">
+				<Title as="h2" id="ensaios-title" size="lg" className="font-heading">
 					Atuação técnica e ensaios mecânicos
 				</Title>
 				<Text tone="subtle" className="max-w-2xl text-sm sm:text-base">
@@ -118,7 +118,7 @@ export function MechanicalTests() {
 									<FlaskConical className="size-5 text-red-600 sm:size-6" />
 								</div>
 								<div>
-									<Title size="md" className="font-heading">
+									<Title as="h3" size="md" className="font-heading">
 										Ensaios Destrutivos
 									</Title>
 									<Text size="xs" tone="muted">
@@ -159,7 +159,7 @@ export function MechanicalTests() {
 									<FlaskConical className="size-5 text-emerald-600 sm:size-6" />
 								</div>
 								<div>
-									<Title size="md" className="font-heading">
+									<Title as="h3" size="md" className="font-heading">
 										Ensaios Não Destrutivos
 									</Title>
 									<Text size="xs" tone="muted">
@@ -191,6 +191,15 @@ export function MechanicalTests() {
 					</Card>
 				</AnimatedCard>
 			</div>
+
+			<nav aria-label="Links internos de ensaios" className="mt-8 rounded-lg border border-border/60 bg-muted/30 p-4">
+				<Text size="xs" tone="muted" className="mb-2 uppercase tracking-wide">Veja também</Text>
+				<div className="flex flex-wrap gap-4 text-sm">
+					<a href="#areas" className="text-primary hover:underline">Áreas de atuação</a>
+					<a href="#outras-areas" className="text-primary hover:underline">Outras especialidades</a>
+					<a href="#contato" className="text-primary hover:underline">Enviar detalhes do caso</a>
+				</div>
+			</nav>
 		</AnimatedSection>
 	);
 }

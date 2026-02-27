@@ -23,17 +23,25 @@ const titleVariants = tv({
   },
 });
 
+type HeadingTag = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+
 type TitleProps = React.HTMLAttributes<HTMLHeadingElement> &
-  VariantProps<typeof titleVariants>;
+  VariantProps<typeof titleVariants> & {
+    as?: HeadingTag;
+  };
 
 const Title = React.forwardRef<HTMLHeadingElement, TitleProps>(
-  ({ className, size, tone, ...props }, ref) => (
-    <h2
-      ref={ref}
-      className={cn(titleVariants({ size, tone, className }))}
-      {...props}
-    />
-  ),
+  ({ className, size, tone, as = "h2", ...props }, ref) => {
+    const Component = as;
+
+    return (
+      <Component
+        ref={ref}
+        className={cn(titleVariants({ size, tone, className }))}
+        {...props}
+      />
+    );
+  },
 );
 
 Title.displayName = "Title";

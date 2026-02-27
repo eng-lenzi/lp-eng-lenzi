@@ -9,11 +9,13 @@ import { Crosshair, Phone } from "lucide-react";
 
 const menuItems = [
 	{ label: "Início", href: "#inicio" },
+	{ label: "Arquitetura", href: "#hub-conteudo" },
 	{ label: "Serviços", href: "#servicos" },
-	{ label: "Áreas de Atuação", href: "#areas" },
+	{ label: "Áreas", href: "#areas" },
 	{ label: "Ensaios", href: "#ensaios" },
+	{ label: "Satélites", href: "#outras-areas" },
 	{ label: "Credenciais", href: "#credenciais" },
-	{ label: "WhatsApp", href: "#contato" },
+	{ label: "Contato", href: "#contato" },
 ] as const;
 
 function MobileMenu({

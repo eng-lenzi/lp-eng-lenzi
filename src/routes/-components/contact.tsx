@@ -9,7 +9,7 @@ import { AnimatedSection, AnimatedCard, EmojiRenderer } from "./animation-helper
 
 export function Contact() {
 	return (
-		<AnimatedSection id="contato" className="border-t py-12 sm:py-16 lg:py-24" delay={0.1}>
+		<AnimatedSection id="contato" aria-labelledby="contato-title" className="border-t py-12 sm:py-16 lg:py-24" delay={0.1}>
 			<div className="space-y-3 mb-8 sm:space-y-4 sm:mb-10 lg:mb-14">
 				<Badge
 					variant="outline"
@@ -18,7 +18,7 @@ export function Contact() {
 					<EmojiRenderer emoji="📞" />
 					WhatsApp e formulário
 				</Badge>
-				<Title size="lg" className="font-heading">
+				<Title as="h2" id="contato-title" size="lg" className="font-heading">
 					Fale no WhatsApp ou envie os dados do caso
 				</Title>
 				<Text tone="subtle" className="max-w-2xl text-sm sm:text-base">

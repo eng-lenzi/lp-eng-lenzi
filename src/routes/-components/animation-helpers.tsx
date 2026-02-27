@@ -6,18 +6,22 @@ export function AnimatedSection({
 	className,
 	delay = 0,
 	id,
+	as = "section",
+	...props
 }: {
 	children: React.ReactNode;
 	className?: string;
 	delay?: number;
 	id?: string;
-}) {
+	as?: keyof JSX.IntrinsicElements;
+} & React.HTMLAttributes<HTMLElement>) {
 	const ref = useRef(null);
 	const isInView = useInView(ref, { once: true, margin: "-100px" });
 	const reduceMotion = useReducedMotion();
+	const Component = motion[as as "section"] ?? motion.section;
 
 	return (
-		<motion.div
+		<Component
 			ref={ref}
 			id={id}
 			initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 40 }}
@@ -30,9 +34,10 @@ export function AnimatedSection({
 			}
 			transition={reduceMotion ? { duration: 0 } : { duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] }}
 			className={className}
+			{...props}
 		>
 			{children}
-		</motion.div>
+		</Component>
 	);
 }
 

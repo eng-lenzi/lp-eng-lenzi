@@ -34,6 +34,7 @@ export function Hero() {
 		<section
 			ref={heroRef}
 			id="inicio"
+			aria-labelledby="hero-title"
 			className="relative pt-8 pb-8 sm:pt-16 sm:pb-10 lg:py-20"
 		>
 			<HeroParticles />
@@ -54,6 +55,8 @@ export function Hero() {
 
 					<AnimatedSection delay={0.2}>
 						<Title
+							as="h1"
+							id="hero-title"
 							size="xl"
 							className="font-heading text-3xl sm:text-4xl lg:text-[3.5rem] leading-[1.1]"
 						>
