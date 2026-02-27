@@ -64,7 +64,7 @@ function MobileMenu({
 						</nav>
 						<div className="border-t p-6">
 							<Button asChild className="w-full" size="lg">
-								<a href="tel:+5519997110785">Ligar agora</a>
+								<a href="https://wa.me/5519997110785?text=Ol%C3%A1%2C%20Eng.%20Fernando%20Lenzi.%20Vim%20pelo%20site%20e%20gostaria%20de%20falar%20sobre%20uma%20per%C3%ADcia%2Fassist%C3%AAncia%20t%C3%A9cnica." target="_blank" rel="noopener noreferrer">Falar no WhatsApp</a>
 							</Button>
 						</div>
 					</motion.div>
@@ -141,9 +141,9 @@ export function Header({ mobileMenuOpen, setMobileMenuOpen }: HeaderProps) {
 					<div className="flex items-center gap-2">
 						<ThemeToggle />
 						<Button asChild size="sm" className="hidden sm:flex">
-							<a href="tel:+5519997110785">
+							<a href="https://wa.me/5519997110785?text=Ol%C3%A1%2C%20Eng.%20Fernando%20Lenzi.%20Vim%20pelo%20site%20e%20gostaria%20de%20falar%20sobre%20uma%20per%C3%ADcia%2Fassist%C3%AAncia%20t%C3%A9cnica." target="_blank" rel="noopener noreferrer">
 								<Phone className="size-4" />
-								<span>Contato</span>
+								<span>Falar no WhatsApp</span>
 							</a>
 						</Button>
 						<Button

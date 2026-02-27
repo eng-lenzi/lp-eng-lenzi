@@ -65,7 +65,7 @@ export function ContactForm({
 
       if (!hasEmailJsConfig) {
         window.open(fallbackHref, "_blank", "noopener,noreferrer");
-        setSuccessMessage("Abrimos seu canal de contato principal.");
+        setSuccessMessage("Abrimos o WhatsApp para você continuar o atendimento.");
       }
     } catch (error) {
       if (error instanceof Error) {
