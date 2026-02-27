@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { Header } from "./header";
 import { Hero } from "./hero";
 import { Services } from "./services";
-import { ContentHub } from "./content-hub";
 import { Areas } from "./areas";
 import { MechanicalTests } from "./mechanical-tests";
 import { OtherAreas } from "./other-areas";
@@ -58,7 +57,6 @@ export function LandingSinglePage() {
 
 			<main className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16">
 				<Hero />
-				<ContentHub />
 				<Services />
 				<Areas />
 				<MechanicalTests />
