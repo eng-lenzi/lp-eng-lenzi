@@ -118,18 +118,18 @@ export function Services() {
 				<Text size="xs" tone="muted" className="mb-2 uppercase tracking-wide">
 					Veja também
 				</Text>
-				<div className="flex flex-col sm:flex-row sm:flex-wrap gap-1 text-sm">
-					<a href="#areas" className="flex items-center justify-between py-2 text-primary hover:underline sm:py-0 sm:gap-4" onClick={(e) => scrollToSection(e, "areas")}>
+				<div className="flex flex-col sm:flex-row gap-1 sm:gap-8 text-sm">
+					<a href="#areas" className="flex items-center justify-between py-2 text-primary hover:underline sm:py-0 sm:justify-start" onClick={(e) => scrollToSection(e, "areas")}>
 						<span>Áreas prioritárias</span>
-						<ChevronRight className="size-4 sm:hidden" />
+						<ChevronRight className="size-4" />
 					</a>
-					<a href="#ensaios" className="flex items-center justify-between py-2 text-primary hover:underline sm:py-0 sm:gap-4" onClick={(e) => scrollToSection(e, "ensaios")}>
+					<a href="#ensaios" className="flex items-center justify-between py-2 text-primary hover:underline sm:py-0 sm:justify-start" onClick={(e) => scrollToSection(e, "ensaios")}>
 						<span>Ensaios técnicos</span>
-						<ChevronRight className="size-4 sm:hidden" />
+						<ChevronRight className="size-4" />
 					</a>
-					<a href="#contato" className="flex items-center justify-between py-2 text-primary hover:underline sm:py-0 sm:gap-4" onClick={(e) => scrollToSection(e, "contato")}>
+					<a href="#contato" className="flex items-center justify-between py-2 text-primary hover:underline sm:py-0 sm:justify-start" onClick={(e) => scrollToSection(e, "contato")}>
 						<span>Solicitar atendimento</span>
-						<ChevronRight className="size-4 sm:hidden" />
+						<ChevronRight className="size-4" />
 					</a>
 				</div>
 			</nav>
