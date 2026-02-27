@@ -13,6 +13,29 @@ const fallbackHref = projectData.cta.href;
 const fallbackLabel = projectData.cta.label;
 const hasEmailJsConfig = emailjs.isConfigured();
 
+function buildWhatsAppMessage(values: ContactValues): string {
+  const parts: string[] = [];
+
+  if (values.name) {
+    parts.push(`*Nome:* ${values.name}`);
+  }
+  if (values.email) {
+    parts.push(`*Email:* ${values.email}`);
+  }
+  if (values.phone) {
+    parts.push(`*Telefone:* ${values.phone}`);
+  }
+  if (values.message) {
+    parts.push(`*Mensagem:* ${values.message}`);
+  }
+
+  if (parts.length === 0) {
+    return "";
+  }
+
+  return parts.join("%0A%0A");
+}
+
 type ContactFormProps = {
   sectionId?: string;
   title?: string;
@@ -64,7 +87,15 @@ export function ContactForm({
       }
 
       if (!hasEmailJsConfig) {
-        window.open(fallbackHref, "_blank", "noopener,noreferrer");
+        const message = buildWhatsAppMessage(values);
+        const baseUrl = fallbackHref.split("?text=")[0];
+        const encodedMessage = message
+          ? `%0A%0A${message}`
+          : encodeURIComponent("");
+        const url = message
+          ? `${baseUrl}?text=${encodedMessage}`
+          : fallbackHref;
+        window.open(url, "_blank", "noopener,noreferrer");
         setSuccessMessage("Abrimos o WhatsApp para você continuar o atendimento.");
       }
     } catch (error) {
@@ -141,10 +172,23 @@ export function ContactForm({
           )}
 
           {(errorMessage || !hasEmailJsConfig) && (
-            <Button asChild type="button" variant="outline" className="w-full">
-              <a href={fallbackHref} target="_blank" rel="noopener noreferrer">
-                Falar no WhatsApp
-              </a>
+            <Button
+              type="button"
+              variant="outline"
+              className="w-full"
+              onClick={() => {
+                const message = buildWhatsAppMessage(values);
+                const baseUrl = fallbackHref.split("?text=")[0];
+                const encodedMessage = message
+                  ? `%0A%0A${message}`
+                  : "";
+                const url = message
+                  ? `${baseUrl}?text=${encodedMessage}`
+                  : fallbackHref;
+                window.open(url, "_blank", "noopener,noreferrer");
+              }}
+            >
+              Falar no WhatsApp
             </Button>
           )}
 

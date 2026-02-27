@@ -128,7 +128,7 @@ export function Header({ mobileMenuOpen, setMobileMenuOpen }: HeaderProps) {
 							<LogoMark className="h-full w-full object-contain" />
 						</div>
 						<Text className="font-semibold">
-							Fernando Eugênio Lenzi
+							Fernando Eugenio Lenzi
 						</Text>
 					</button>
 

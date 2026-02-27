@@ -30,7 +30,7 @@ export function Footer() {
 								<LogoMark className="h-full w-full object-contain" />
 							</div>
 							<Text className="text-lg font-semibold">
-								Fernando Eugênio Lenzi
+								Fernando Eugenio Lenzi
 							</Text>
 						</motion.div>
 						<Text tone="subtle" className="max-w-sm">
@@ -76,7 +76,7 @@ export function Footer() {
 						confidencialidade.
 					</Text>
 					<Text size="xs" tone="muted">
-						© {currentYear} Fernando Eugênio Lenzi. Todos os direitos reservados.
+						© {currentYear} Fernando Eugenio Lenzi. Todos os direitos reservados.
 					</Text>
 				</div>
 			</div>

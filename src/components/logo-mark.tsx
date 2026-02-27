@@ -3,7 +3,7 @@ type LogoMarkProps = {
   alt?: string;
 };
 
-export function LogoMark({ className = "", alt = "Logo Eng. Fernando Eugênio Lenzi" }: LogoMarkProps) {
+export function LogoMark({ className = "", alt = "Logo Eng. Fernando Eugenio Lenzi" }: LogoMarkProps) {
   return (
     <img
       src="/brand/logo.svg"

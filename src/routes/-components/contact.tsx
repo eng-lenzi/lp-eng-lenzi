@@ -3,7 +3,6 @@ import { User, Phone, MapPin, MessageCircle } from "lucide-react";
 
 import { Text, Title } from "@/components/typography";
 import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { AnimatedSection, AnimatedCard } from "./animation-helpers";
 import { ContactForm } from "./contact-form";
 
@@ -30,71 +29,69 @@ export function Contact() {
 			<div className="grid gap-8 lg:grid-cols-[1fr_1.2fr]">
 				<div className="space-y-6">
 					<AnimatedCard delay={0.2}>
-						<Card className="border-border/60 bg-gradient-to-br from-muted/40 via-muted/20 to-transparent">
-							<CardContent className="space-y-6 p-5 sm:space-y-8 sm:p-8">
-								<motion.div
-									initial={{ opacity: 0 }}
-									animate={{ opacity: 1 }}
-									transition={{ duration: 0.3, delay: 0.3 }}
-									className="flex items-center gap-4 sm:gap-5"
-								>
-									<div className="flex h-12 w-12 items-center justify-center rounded-xl sm:h-14 sm:w-14 sm:rounded-2xl bg-gradient-to-br from-primary to-primary/80 text-primary-foreground shadow-lg shadow-primary/25">
-										<User className="size-6 sm:size-8" />
-									</div>
-									<div>
-										<Text className="text-xl font-semibold">
-											Fernando Eugênio Lenzi
-										</Text>
-										<Text size="sm" tone="subtle">
-											Engenheiro Mecânico - Perito Judicial
-										</Text>
-									</div>
-								</motion.div>
+						<div className="space-y-4 p-4 sm:space-y-5 sm:p-6">
+							<motion.div
+								initial={{ opacity: 0 }}
+								animate={{ opacity: 1 }}
+								transition={{ duration: 0.3, delay: 0.3 }}
+								className="flex items-center gap-4 sm:gap-5"
+							>
+								<div className="flex h-12 w-12 items-center justify-center rounded-xl sm:h-14 sm:w-14 sm:rounded-2xl bg-gradient-to-br from-primary to-primary/80 text-primary-foreground shadow-lg shadow-primary/25">
+									<User className="size-6 sm:size-8" />
+								</div>
+								<div>
+									<Text className="text-xl font-semibold">
+										Fernando Eugenio Lenzi
+									</Text>
+									<Text size="sm" tone="subtle">
+										Engenheiro Mecânico - Perito Judicial
+									</Text>
+								</div>
+							</motion.div>
 
-								<div className="h-px bg-border/60" />
+							<div className="h-px bg-border/60" />
 
-								<a
-									href="https://wa.me/5519997110785?text=Ol%C3%A1%2C%20Eng.%20Fernando%20Lenzi.%20Vim%20pelo%20site%20e%20gostaria%20de%20falar%20sobre%20uma%20per%C3%ADcia%2Fassist%C3%AAncia%20t%C3%A9cnica."
-									target="_blank"
-									rel="noopener noreferrer"
-									className="flex items-center gap-4 rounded-xl p-3 transition-colors hover:bg-muted sm:p-4"
-								>
-									<div className="flex h-11 w-11 items-center justify-center rounded-xl sm:h-12 sm:w-12 bg-primary/10">
-										<Phone className="size-5 text-primary sm:size-6" />
-									</div>
-									<div>
-										<Text size="xs" tone="muted">
-											WhatsApp
-										</Text>
-										<Text className="text-lg font-semibold">
-											(19) 99711-0785
-										</Text>
-									</div>
-								</a>
+							<a
+								href="https://wa.me/5519997110785?text=Ol%C3%A1%2C%20Eng.%20Fernando%20Lenzi.%20Vim%20pelo%20site%20e%20gostaria%20de%20falar%20sobre%20uma%20per%C3%ADcia%2Fassist%C3%AAncia%20t%C3%A9cnica."
+								target="_blank"
+								rel="noopener noreferrer"
+								className="flex items-center gap-3 rounded-lg p-2 transition-colors hover:bg-muted sm:gap-4 sm:p-3"
+							>
+								<div className="flex h-10 w-10 items-center justify-center rounded-lg sm:h-11 sm:w-11 bg-primary/10">
+									<Phone className="size-4 text-primary sm:size-5" />
+								</div>
+								<div>
+									<Text size="xs" tone="muted">
+										WhatsApp
+									</Text>
+									<Text className="text-base font-semibold sm:text-lg">
+										(19) 99711-0785
+									</Text>
+								</div>
+							</a>
 
-								<a
-									href="https://maps.google.com/?q=Rua+Sao+Benedito+107+Amparo+SP"
-									target="_blank"
-									rel="noopener noreferrer"
-									className="flex items-center gap-4 rounded-xl p-3 transition-colors hover:bg-muted sm:p-4"
-								>
-									<div className="flex h-11 w-11 items-center justify-center rounded-xl sm:h-12 sm:w-12 bg-primary/10">
-										<MapPin className="size-5 text-primary sm:size-6" />
-									</div>
-									<div>
-										<Text size="xs" tone="muted">
-											Endereço
-										</Text>
-										<Text className="text-lg font-semibold">
-											Rua São Benedito nº 107, Centro
-										</Text>
-										<Text size="sm" tone="subtle">
-											Amparo - SP, CEP 13900-250
-										</Text>
-									</div>
-								</a>
-							</CardContent>
-						</Card>
+							<a
+								href="https://maps.google.com/?q=Rua+Sao+Benedito+107+Amparo+SP"
+								target="_blank"
+								rel="noopener noreferrer"
+								className="flex items-center gap-3 rounded-lg p-2 transition-colors hover:bg-muted sm:gap-4 sm:p-3"
+							>
+								<div className="flex h-10 w-10 items-center justify-center rounded-lg sm:h-11 sm:w-11 bg-primary/10">
+									<MapPin className="size-4 text-primary sm:size-5" />
+								</div>
+								<div>
+									<Text size="xs" tone="muted">
+										Endereço
+									</Text>
+									<Text className="text-base font-semibold sm:text-lg">
+										Rua São Benedito nº 107, Centro
+									</Text>
+									<Text size="sm" tone="subtle">
+										Amparo - SP, CEP 13900-250
+									</Text>
+								</div>
+							</a>
+						</div>
 					</AnimatedCard>
 				</div>
 
