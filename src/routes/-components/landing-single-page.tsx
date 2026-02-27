@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Header } from "./header";
 import { Hero } from "./hero";
 import { Services } from "./services";
@@ -11,6 +12,14 @@ import { Footer } from "./footer";
 
 export function LandingSinglePage() {
 	const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+	const containerRef = useRef(null);
+	const { scrollYProgress } = useScroll({
+		target: containerRef,
+		offset: ["start start", "end end"],
+	});
+
+	const logoY = useTransform(scrollYProgress, [0, 1], [0, -100]);
 
 	useEffect(() => {
 		if (mobileMenuOpen) {
@@ -52,7 +61,18 @@ export function LandingSinglePage() {
 	}, []);
 
 	return (
-		<div className="min-h-screen bg-background overflow-x-hidden">
+		<div ref={containerRef} className="min-h-screen bg-background overflow-x-hidden">
+			<motion.div
+				style={{ y: logoY }}
+				className="fixed inset-0 pointer-events-none flex items-start justify-center opacity-10 z-0"
+			>
+				<img
+					src="/brand/logo.svg"
+					alt=""
+					className="w-[80vw] max-w-[600px] mt-20"
+				/>
+			</motion.div>
+
 			<Header mobileMenuOpen={mobileMenuOpen} setMobileMenuOpen={setMobileMenuOpen} />
 
 			<main className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16">

@@ -1,4 +1,4 @@
-import { motion, useInView, useScroll, useTransform } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import {
 	CheckCircle2,
 	ChevronRight,
@@ -27,31 +27,13 @@ export function Hero() {
 	const heroRef = useRef(null);
 	const isHeroInView = useInView(heroRef, { once: true });
 
-	const { scrollYProgress } = useScroll({
-		target: heroRef,
-		offset: ["start start", "end end"],
-	});
-
-	const logoY = useTransform(scrollYProgress, [0, 1], [30, -30]);
-
 	return (
 		<section
 			ref={heroRef}
 			id="inicio"
 			aria-labelledby="hero-title"
-			className="relative pt-8 pb-8 sm:pt-16 sm:pb-10 lg:py-20 overflow-hidden"
+			className="relative pt-8 pb-8 sm:pt-16 sm:pb-10 lg:py-20"
 		>
-
-			<motion.div
-				style={{ y: logoY }}
-				className="absolute inset-0 pointer-events-none flex items-center justify-center opacity-15"
-			>
-				<img
-					src="/brand/logo.svg"
-					alt=""
-					className="w-[120%] max-w-[800px] h-auto"
-				/>
-			</motion.div>
 
 			<div className="grid gap-10 lg:grid-cols-[1.15fr_1fr] lg:gap-16">
 				<div className="relative z-10 space-y-8 lg:space-y-10">
