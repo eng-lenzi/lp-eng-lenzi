@@ -1,6 +1,6 @@
 import { Outlet, createRootRouteWithContext } from "@tanstack/react-router";
 import type { QueryClient } from "@tanstack/react-query";
-import { Analytics } from "@vercel/analytics/next";
+import { inject } from "@vercel/analytics";
 
 import { ErrorBoundary } from "@/components/error-boundary";
 import { useThemeStore } from "@/stores/theme";
@@ -16,11 +16,12 @@ export const Route = createRootRouteWithContext<RouterContext>()({
 function RootComponent() {
   const { theme } = useThemeStore();
 
+  inject();
+
   return (
     <div className={theme}>
       <ErrorBoundary>
         <Outlet />
-        <Analytics />
       </ErrorBoundary>
     </div>
   );
