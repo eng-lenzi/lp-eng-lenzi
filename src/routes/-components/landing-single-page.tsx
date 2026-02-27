@@ -19,7 +19,7 @@ export function LandingSinglePage() {
 		offset: ["start start", "end end"],
 	});
 
-	const logoY = useTransform(scrollYProgress, [0, 1], [0, -100]);
+	const logoY = useTransform(scrollYProgress, [0, 0.4], [0, -200]);
 
 	useEffect(() => {
 		if (mobileMenuOpen) {
@@ -64,7 +64,7 @@ export function LandingSinglePage() {
 		<div ref={containerRef} className="min-h-screen bg-background overflow-x-hidden">
 			<motion.div
 				style={{ y: logoY }}
-				className="fixed inset-0 pointer-events-none flex items-start justify-center opacity-10 z-0"
+				className="fixed inset-0 pointer-events-none flex items-start justify-center opacity-20 z-0"
 			>
 				<img
 					src="/brand/logo.svg"
