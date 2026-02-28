@@ -43,7 +43,7 @@ function MobileMenu({
 						animate={{ opacity: 1 }}
 						exit={{ opacity: 0 }}
 						transition={{ duration: 0.2 }}
-						className="fixed inset-0 z-50 bg-background/98 backdrop-blur-xl"
+						className="fixed inset-0 top-16 z-40 bg-background/95"
 						onClick={onClose}
 					/>
 					<motion.div
@@ -123,7 +123,7 @@ export function Header({ mobileMenuOpen, setMobileMenuOpen }: HeaderProps) {
 				onClose={() => setMobileMenuOpen(false)}
 				handleNavClick={handleNavClick}
 			/>
-			<header className="fixed top-0 left-0 right-0 z-40 bg-background shadow-b">
+			<header className="fixed top-0 left-0 right-0 z-40 bg-background border-b">
 				<div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
 					<button
 						type="button"
