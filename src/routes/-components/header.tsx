@@ -123,7 +123,7 @@ export function Header({ mobileMenuOpen, setMobileMenuOpen }: HeaderProps) {
 				onClose={() => setMobileMenuOpen(false)}
 				handleNavClick={handleNavClick}
 			/>
-			<header className="fixed top-0 left-0 right-0 z-40 bg-background">
+			<header className="fixed top-0 left-0 right-0 z-40 bg-background shadow-b">
 				<div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
 					<button
 						type="button"
