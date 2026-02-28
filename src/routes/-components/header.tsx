@@ -65,9 +65,9 @@ function MobileMenu({
 									initial={{ opacity: 0, x: 20 }}
 									animate={{ opacity: 1, x: 0 }}
 									transition={{ delay: idx * 0.05 }}
-									className="flex items-center justify-between rounded-xl px-4 py-4 text-lg font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+									className="flex items-center justify-between rounded-xl px-4 py-4 text-lg font-medium text-foreground transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
 								>
-									{item.label}
+									<Text className="text-foreground">{item.label}</Text>
 									<ChevronRight className="size-5 text-muted-foreground" />
 								</motion.a>
 							))}

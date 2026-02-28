@@ -1,5 +1,8 @@
 import { motion, useScroll, useTransform } from "framer-motion";
+import { MessageCircle } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { Button } from "@/components/ui/button";
+import { projectData } from "@/lib/project-data";
 import { Areas } from "./areas";
 import { Contact } from "./contact";
 import { Credentials } from "./credentials";
@@ -94,6 +97,21 @@ export function LandingSinglePage() {
 			</main>
 
 			<Footer />
+
+			<Button
+				asChild
+				size="icon"
+				className="fixed right-4 bottom-4 z-50 h-12 w-12 rounded-full bg-[#25D366] text-white shadow-lg hover:bg-[#22c35e] sm:right-6 sm:bottom-6"
+			>
+				<a
+					href={projectData.cta.href}
+					target="_blank"
+					rel="noopener noreferrer"
+					aria-label="Falar no WhatsApp"
+				>
+					<MessageCircle className="size-6" />
+				</a>
+			</Button>
 		</div>
 	);
 }

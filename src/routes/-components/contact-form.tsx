@@ -1,5 +1,5 @@
 import { type FormEvent, useState } from "react";
-import { Loader2, Send } from "lucide-react";
+import { Loader2, MessageCircle, Send } from "lucide-react";
 
 import { Text, Title } from "@/components/typography";
 import { Button } from "@/components/ui/button";
@@ -12,6 +12,17 @@ const businessName = projectData.businessName;
 const fallbackHref = projectData.cta.href;
 const fallbackLabel = projectData.cta.label;
 const hasEmailJsConfig = emailjs.isConfigured();
+
+function buildWhatsAppUrl(values: ContactValues): string {
+  const message = buildWhatsAppMessage(values);
+  const baseUrl = fallbackHref.split("?text=")[0];
+
+  if (!message) {
+    return fallbackHref;
+  }
+
+  return `${baseUrl}?text=%0A%0A${message}`;
+}
 
 function buildWhatsAppMessage(values: ContactValues): string {
   const parts: string[] = [];
@@ -87,15 +98,7 @@ export function ContactForm({
       }
 
       if (!hasEmailJsConfig) {
-        const message = buildWhatsAppMessage(values);
-        const baseUrl = fallbackHref.split("?text=")[0];
-        const encodedMessage = message
-          ? `%0A%0A${message}`
-          : encodeURIComponent("");
-        const url = message
-          ? `${baseUrl}?text=${encodedMessage}`
-          : fallbackHref;
-        window.open(url, "_blank", "noopener,noreferrer");
+        window.open(buildWhatsAppUrl(values), "_blank", "noopener,noreferrer");
         setSuccessMessage("Abrimos o WhatsApp para você continuar o atendimento.");
       }
     } catch (error) {
@@ -171,38 +174,23 @@ export function ContactForm({
             </Text>
           )}
 
-          {(errorMessage || !hasEmailJsConfig) && (
-            <Button
-              type="button"
-              variant="outline"
-              className="w-full"
-              onClick={() => {
-                const message = buildWhatsAppMessage(values);
-                const baseUrl = fallbackHref.split("?text=")[0];
-                const encodedMessage = message
-                  ? `%0A%0A${message}`
-                  : "";
-                const url = message
-                  ? `${baseUrl}?text=${encodedMessage}`
-                  : fallbackHref;
-                window.open(url, "_blank", "noopener,noreferrer");
-              }}
-            >
-              Falar no WhatsApp
-            </Button>
-          )}
+          <Button
+            type="button"
+            disabled={isSubmitting}
+            className="w-full"
+            onClick={() => {
+              window.open(buildWhatsAppUrl(values), "_blank", "noopener,noreferrer");
+            }}
+          >
+            <MessageCircle />
+            {fallbackLabel}
+          </Button>
 
           <Button type="submit" disabled={isSubmitting} className="w-full">
             {isSubmitting && <Loader2 className="size-4 animate-spin" />}
             <Send />
             {submitLabel}
           </Button>
-
-          {!hasEmailJsConfig && (
-            <Text tone="muted" size="xs">
-              EmailJS não configurado. O envio abre {fallbackLabel}.
-            </Text>
-          )}
         </form>
       </CardContent>
     </Card>
