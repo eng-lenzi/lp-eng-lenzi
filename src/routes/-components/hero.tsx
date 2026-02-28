@@ -189,7 +189,7 @@ export function Hero() {
 												</Text>
 												<div className="mt-1 inline-block rounded-lg bg-primary/90 px-2 py-0.5 sm:mt-1.5 sm:px-3 sm:py-1">
 													<Text size="xs" className="font-semibold text-white">
-														CREA-SP: 123.456
+														CREA-SP: 0685140773
 													</Text>
 												</div>
 											</div>
