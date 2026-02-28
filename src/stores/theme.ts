@@ -9,16 +9,24 @@ interface ThemeState {
   toggleTheme: () => void;
 }
 
+function getSystemTheme(): Theme {
+  if (typeof window !== "undefined" && window.matchMedia?.("(prefers-color-scheme: dark)").matches) {
+    return "dark";
+  }
+
+  return "light";
+}
+
 export const useThemeStore = create<ThemeState>()(
   persist(
     (set) => ({
-      theme: "dark",
+      theme: getSystemTheme(),
       setTheme: (theme) => set({ theme }),
       toggleTheme: () =>
         set((state) => ({
           theme: state.theme === "dark" ? "light" : "dark",
         })),
     }),
-    { name: "theme-storage" },
+    { name: "theme-storage-v2" },
   ),
 );
