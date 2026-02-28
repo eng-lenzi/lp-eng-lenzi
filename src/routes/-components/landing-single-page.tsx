@@ -1,14 +1,14 @@
-import { useState, useEffect, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { Areas } from "./areas";
+import { Contact } from "./contact";
+import { Credentials } from "./credentials";
+import { Footer } from "./footer";
 import { Header } from "./header";
 import { Hero } from "./hero";
-import { Services } from "./services";
-import { Areas } from "./areas";
 import { MechanicalTests } from "./mechanical-tests";
 import { OtherAreas } from "./other-areas";
-import { Credentials } from "./credentials";
-import { Contact } from "./contact";
-import { Footer } from "./footer";
+import { Services } from "./services";
 
 export function LandingSinglePage() {
 	const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -16,11 +16,10 @@ export function LandingSinglePage() {
 	const containerRef = useRef(null);
 	const { scrollYProgress } = useScroll({
 		target: containerRef,
-		offset: ["start end", "end end"],
+		offset: ["start center", "end end"],
 	});
 
-	const logoY = useTransform(scrollYProgress, [0, 0.5], [0, -300]);
-	const logoOpacity = useTransform(scrollYProgress, [0, 0.5], [0.2, 0]);
+	const logoY = useTransform(scrollYProgress, [0, 1], [200, -1000]);
 
 	useEffect(() => {
 		if (mobileMenuOpen) {
@@ -35,7 +34,9 @@ export function LandingSinglePage() {
 
 	useEffect(() => {
 		const canonicalUrl = `${window.location.origin}/`;
-		const isLocalEnv = ["localhost", "127.0.0.1"].includes(window.location.hostname);
+		const isLocalEnv = ["localhost", "127.0.0.1"].includes(
+			window.location.hostname,
+		);
 		const robotsContent = isLocalEnv
 			? "noindex,nofollow,noarchive,nosnippet"
 			: "index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1";
@@ -62,19 +63,25 @@ export function LandingSinglePage() {
 	}, []);
 
 	return (
-		<div ref={containerRef} className="min-h-screen bg-background overflow-x-hidden">
+		<div
+			ref={containerRef}
+			className="min-h-screen bg-background overflow-x-hidden"
+		>
 			<motion.div
-				style={{ y: logoY, opacity: logoOpacity }}
-				className="fixed inset-0 pointer-events-none flex items-start justify-center z-0"
+				style={{ y: logoY }}
+				className="fixed inset-0 pointer-events-none flex items-start justify-center opacity-10 md:opacity-15 z-0"
 			>
 				<img
 					src="/brand/logo.svg"
 					alt=""
-					className="w-[80vw] max-w-[600px] mt-20"
+					className="w-[80vw] max-w-[600px] mt-[30vh] md:mt-[10vh]"
 				/>
 			</motion.div>
 
-			<Header mobileMenuOpen={mobileMenuOpen} setMobileMenuOpen={setMobileMenuOpen} />
+			<Header
+				mobileMenuOpen={mobileMenuOpen}
+				setMobileMenuOpen={setMobileMenuOpen}
+			/>
 
 			<main className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16">
 				<Hero />
