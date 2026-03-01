@@ -24,20 +24,9 @@ const stats = [
 ] as const;
 
 const timeline = [
-	{
-		year: "2021",
-		description:
-			"Coordenador da Câmara de Engenharia Mecânica do CREA-SP (CEEMM)",
-	},
-	{
-		year: "2013–2025",
-		description: "Atuação por 12 anos como Conselheiro do CREA-SP",
-	},
-	{
-		year: "2019–2025",
-		description:
-			"Presidente da Associação dos Engenheiros da região de Amparo por 6 anos",
-	},
+	{ year: "2013–2025", description: "12 anos como Conselheiro do CREA-SP" },
+	{ year: "2019–2025", description: "6 anos na presidência da Associação de Amparo" },
+	{ year: "2021", description: "Coordenador da Câmara de Eng. Mecânica do CREA-SP" },
 ] as const;
 
 export function Hero() {
@@ -56,7 +45,7 @@ export function Hero() {
 					<AnimatedSection delay={0.1}>
 						<Badge
 							variant="outline"
-							className="border-primary/30 bg-primary/5 px-3 py-1 text-sm sm:px-4 sm:py-1.5"
+							className="border-primary/30 bg-primary/5 px-2 py-0.5 text-xs sm:px-2.5 sm:py-1"
 						>
 							<Cog className="mr-1.5 size-3" />
 							Perícia Judicial e Assistência Técnica
@@ -79,40 +68,36 @@ export function Hero() {
 					</AnimatedSection>
 
 					<AnimatedSection delay={0.3}>
-						<Text
-							size="sm"
-							tone="subtle"
-							className="max-w-xl leading-relaxed sm:text-base"
-						>
-							<motion.span
-								initial={{ opacity: 0 }}
-								animate={{ opacity: 1 }}
-								transition={{ delay: 0.5 }}
-							>
-								35 anos de experiência em perícia e análise técnica, com atuação em
-								mais de 200 processos como Perito Judicial e Assistente Técnico.
-							</motion.span>
-						</Text>
-					</AnimatedSection>
-
-					<AnimatedSection delay={0.35}>
-						<div className="max-w-xl space-y-2 pl-3 border-l border-border/60">
-							{timeline.map((item, idx) => (
-								<motion.div
-									key={item.year}
-									initial={{ opacity: 0, x: -10 }}
-									animate={isHeroInView ? { opacity: 1, x: 0 } : {}}
-									transition={{ duration: 0.25, delay: 0.45 + idx * 0.1 }}
-									className="space-y-0.5"
+						<div className="max-w-xl space-y-2">
+							<Text size="sm" tone="subtle" className="leading-relaxed sm:text-base">
+								<motion.span
+									initial={{ opacity: 0 }}
+									animate={{ opacity: 1 }}
+									transition={{ delay: 0.5 }}
 								>
-									<Text size="xs" className="font-semibold text-foreground/80">
-										{item.year}
-									</Text>
-									<Text size="xs" tone="muted" className="leading-tight">
-										{item.description}
-									</Text>
-								</motion.div>
-							))}
+									35 anos de experiência em perícia e análise técnica, com atuação em
+									mais de 200 processos como Perito Judicial e Assistente Técnico.
+								</motion.span>
+							</Text>
+
+							<div className="space-y-1.5 pl-3 border-l border-border/50">
+								{timeline.map((item, idx) => (
+									<motion.div
+										key={item.year}
+										initial={{ opacity: 0, x: -10 }}
+										animate={isHeroInView ? { opacity: 1, x: 0 } : {}}
+										transition={{ duration: 0.25, delay: 0.45 + idx * 0.1 }}
+										className="flex items-baseline gap-2"
+									>
+										<Text size="xs" className="font-semibold text-foreground/80 whitespace-nowrap">
+											{item.year}
+										</Text>
+										<Text size="xs" tone="muted" className="leading-tight whitespace-nowrap">
+											{item.description}
+										</Text>
+									</motion.div>
+								))}
+							</div>
 						</div>
 					</AnimatedSection>
 
