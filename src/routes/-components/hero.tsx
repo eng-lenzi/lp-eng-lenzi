@@ -5,7 +5,6 @@ import {
 	Cog,
 	Phone,
 	ShieldCheck,
-	TrendingUp,
 } from "lucide-react";
 import { useRef } from "react";
 
@@ -22,20 +21,6 @@ const stats = [
 	{ value: "200", label: "Processos com atuação técnica", suffix: "+" },
 	{ value: "12", label: "Anos como Conselheiro CREA-SP", suffix: "" },
 	{ value: "6", label: "Anos na presidência da Associação", suffix: "" },
-] as const;
-
-const expertise = [
-	"Avaliação",
-	"Colapso",
-	"Acidentes",
-	"Explosão",
-	"Fadiga",
-	"Instalação",
-	"Quebra",
-	"Queda",
-	"Ruptura",
-	"Patente",
-	"PMOC",
 ] as const;
 
 const timeline = [
@@ -111,56 +96,23 @@ export function Hero() {
 					</AnimatedSection>
 
 					<AnimatedSection delay={0.35}>
-						<div className="space-y-3">
-							<Text size="xs" className="font-semibold uppercase tracking-wide text-primary/90">
-								Atuação técnica envolvendo
-							</Text>
-							<div className="flex flex-wrap gap-2">
-								{expertise.map((item) => (
-									<Badge
-										key={item}
-										variant="outline"
-										className="border-border/70 bg-card px-2.5 py-1 text-[11px] sm:text-xs"
-									>
-										{item}
-									</Badge>
-								))}
-							</div>
-							<Text size="xs" tone="muted" className="leading-relaxed">
-								Acompanhamento de ensaios destrutivos e não destrutivos homologados.
-							</Text>
-						</div>
-					</AnimatedSection>
-
-					<AnimatedSection delay={0.4}>
-						<div className="rounded-xl border border-border/70 bg-card/80 p-4 sm:p-5">
-							<div className="mb-4 flex items-center gap-2">
-								<TrendingUp className="size-4 text-primary" />
-								<Title as="h2" size="sm" className="font-heading">
-									Linha do tempo institucional
-								</Title>
-							</div>
-							<div className="relative pl-5 before:absolute before:left-1.5 before:top-1.5 before:h-full before:w-px before:bg-border">
-								<div className="space-y-4">
-									{timeline.map((item, idx) => (
-										<motion.div
-											key={item.year}
-											initial={{ opacity: 0, x: -10 }}
-											animate={isHeroInView ? { opacity: 1, x: 0 } : {}}
-											transition={{ duration: 0.25, delay: 0.5 + idx * 0.1 }}
-											className="relative"
-										>
-											<div className="absolute -left-[1.02rem] top-1 h-2.5 w-2.5 rounded-full bg-primary ring-2 ring-primary/20" />
-											<Text size="xs" className="font-semibold text-primary">
-												{item.year}
-											</Text>
-											<Text size="xs" tone="subtle" className="leading-tight">
-												{item.description}
-											</Text>
-										</motion.div>
-									))}
-								</div>
-							</div>
+						<div className="max-w-xl space-y-2 pl-3 border-l border-border/60">
+							{timeline.map((item, idx) => (
+								<motion.div
+									key={item.year}
+									initial={{ opacity: 0, x: -10 }}
+									animate={isHeroInView ? { opacity: 1, x: 0 } : {}}
+									transition={{ duration: 0.25, delay: 0.45 + idx * 0.1 }}
+									className="space-y-0.5"
+								>
+									<Text size="xs" className="font-semibold text-foreground/80">
+										{item.year}
+									</Text>
+									<Text size="xs" tone="muted" className="leading-tight">
+										{item.description}
+									</Text>
+								</motion.div>
+							))}
 						</div>
 					</AnimatedSection>
 
