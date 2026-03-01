@@ -1,10 +1,15 @@
 import { motion, useInView } from "framer-motion";
 import {
+	Briefcase,
 	CheckCircle2,
 	ChevronRight,
 	Cog,
+	Factory,
+	FileSearch,
 	Phone,
+	Scale,
 	ShieldCheck,
+	Wrench,
 } from "lucide-react";
 import { useRef } from "react";
 
@@ -23,17 +28,20 @@ const stats = [
 	{ value: "6", label: "Anos na presidência da Associação", suffix: "" },
 ] as const;
 
-const summaryItems = [
+const highlights = [
 	"35 anos de experiência",
 	"Perito judicial e assistente técnico",
 	"12 anos como Conselheiro do CREA-SP",
 	"Coordenador da CEEMM do CREA-SP (2021)",
-	"Avaliação e perícia de máquinas e equipamentos",
-	"Elevadores: manutenção, queda e acidentes",
-	"Caldeiras/vasos de pressão: explosão, inspeção e acidentes",
-	"Acidente com veículos: dinâmica do acidente",
-	"Patentes: cópia de patente e modelo de utilidade",
-	"Especialista em postos de combustíveis (SASC)",
+] as const;
+
+const specialties = [
+	{ icon: Wrench, text: "Avaliação e perícia de máquinas e equipamentos" },
+	{ icon: Briefcase, text: "Elevadores: manutenção, queda e acidentes" },
+	{ icon: Factory, text: "Caldeiras/vasos de pressão: explosão, inspeção e acidentes" },
+	{ icon: Scale, text: "Acidente com veículos: dinâmica do acidente" },
+	{ icon: FileSearch, text: "Patentes: cópia de patente e modelo de utilidade" },
+	{ icon: ShieldCheck, text: "Especialista em postos de combustíveis (SASC)" },
 ] as const;
 
 export function Hero() {
@@ -75,22 +83,45 @@ export function Hero() {
 					</AnimatedSection>
 
 					<AnimatedSection delay={0.3}>
-						<div className="max-w-xl rounded-xl border border-border/60 bg-card/70 p-3 sm:p-4">
-							<div className="space-y-1.5">
-								{summaryItems.map((item, idx) => (
+						<div className="max-w-xl space-y-3">
+							<div className="grid gap-2 sm:grid-cols-2">
+								{highlights.map((item, idx) => (
 									<motion.div
 										key={item}
 										initial={{ opacity: 0, y: 6 }}
 										animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
-										transition={{ duration: 0.2, delay: 0.4 + idx * 0.04 }}
-										className="flex items-start gap-2"
+										transition={{ duration: 0.2, delay: 0.38 + idx * 0.05 }}
+										className="rounded-lg border border-primary/20 bg-primary/5 px-3 py-2"
 									>
-										<Text size="xs" className="text-primary mt-0.5">•</Text>
-										<Text size="xs" tone="subtle" className="leading-tight">
+										<Text size="xs" className="font-medium leading-tight text-foreground/90">
 											{item}
 										</Text>
 									</motion.div>
 								))}
+							</div>
+
+							<div className="grid gap-2 sm:grid-cols-2">
+								{specialties.map((item, idx) => {
+									const Icon = item.icon;
+									return (
+										<motion.div
+											key={item.text}
+											initial={{ opacity: 0, y: 6 }}
+											animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
+											transition={{ duration: 0.2, delay: 0.6 + idx * 0.05 }}
+											className="rounded-lg border border-border/70 bg-card px-3 py-2"
+										>
+											<div className="flex items-start gap-2">
+												<div className="mt-0.5 rounded-md bg-primary/10 p-1">
+													<Icon className="size-3.5 text-primary" />
+												</div>
+												<Text size="xs" tone="subtle" className="leading-tight">
+													{item.text}
+												</Text>
+											</div>
+										</motion.div>
+									);
+								})}
 							</div>
 						</div>
 					</AnimatedSection>
