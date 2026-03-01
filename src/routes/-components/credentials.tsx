@@ -1,5 +1,4 @@
-import { motion } from "framer-motion";
-import { Award, ShieldCheck, TrendingUp } from "lucide-react";
+import { Award, ShieldCheck } from "lucide-react";
 
 import { Text, Title } from "@/components/typography";
 import { Badge } from "@/components/ui/badge";
@@ -50,57 +49,6 @@ export function Credentials() {
 					</AnimatedCard>
 				))}
 			</div>
-
-			<AnimatedCard delay={0.25}>
-				<div className="mt-6 sm:mt-8">
-					<div className="flex items-center gap-2 mb-4">
-						<TrendingUp className="size-4 text-primary" />
-						<Title as="h3" size="sm" className="font-heading">
-							Trajetória institucional
-						</Title>
-					</div>
-					<div className="relative pl-6 before:absolute before:left-2 before:top-1.5 before:h-full before:w-px before:bg-border">
-						<div className="space-y-4">
-							<motion.div
-								initial={{ opacity: 0, x: -10 }}
-								whileInView={{ opacity: 1, x: 0 }}
-								transition={{ duration: 0.3 }}
-								className="relative"
-							>
-								<div className="absolute -left-[1.15rem] top-1 h-2.5 w-2.5 rounded-full bg-primary ring-2 ring-primary/20" />
-								<Text size="xs" className="font-semibold text-primary">2021</Text>
-								<Text size="xs" tone="subtle" className="leading-tight">
-									Eleito Coordenador da Câmara de Engenharia Mecânica do CREA-SP
-								</Text>
-							</motion.div>
-							<motion.div
-								initial={{ opacity: 0, x: -10 }}
-								whileInView={{ opacity: 1, x: 0 }}
-								transition={{ duration: 0.3, delay: 0.1 }}
-								className="relative"
-							>
-								<div className="absolute -left-[1.15rem] top-1 h-2.5 w-2.5 rounded-full bg-primary/60 ring-2 ring-primary/10" />
-								<Text size="xs" className="font-semibold text-primary">2013</Text>
-								<Text size="xs" tone="subtle" className="leading-tight">
-									Início como Conselheiro do CREA-SP (CEEMM)
-								</Text>
-							</motion.div>
-							<motion.div
-								initial={{ opacity: 0, x: -10 }}
-								whileInView={{ opacity: 1, x: 0 }}
-								transition={{ duration: 0.3, delay: 0.2 }}
-								className="relative"
-							>
-								<div className="absolute -left-[1.15rem] top-1 h-2.5 w-2.5 rounded-full bg-primary/40 ring-2 ring-primary/5" />
-								<Text size="xs" className="font-semibold text-primary">2019</Text>
-								<Text size="xs" tone="subtle" className="leading-tight">
-									Eleito Presidente da Associação dos Engenheiros de Amparo
-								</Text>
-							</motion.div>
-						</div>
-					</div>
-				</div>
-			</AnimatedCard>
 
 			<AnimatedCard delay={0.3}>
 				<div

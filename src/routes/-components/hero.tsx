@@ -5,6 +5,7 @@ import {
 	Cog,
 	Phone,
 	ShieldCheck,
+	TrendingUp,
 } from "lucide-react";
 import { useRef } from "react";
 
@@ -17,10 +18,41 @@ import {
 } from "./animation-helpers";
 
 const stats = [
-	{ value: "35+", label: "Anos de experiência", suffix: "" },
-	{ value: "12", label: "Anos no CREA-SP", suffix: "" },
-	{ value: "1000", label: "Perícias realizadas", suffix: "+" },
-	{ value: "98", label: "Satisfação", suffix: "%" },
+	{ value: "35", label: "Anos de experiência", suffix: "" },
+	{ value: "200", label: "Processos com atuação técnica", suffix: "+" },
+	{ value: "12", label: "Anos como Conselheiro CREA-SP", suffix: "" },
+	{ value: "6", label: "Anos na presidência da Associação", suffix: "" },
+] as const;
+
+const expertise = [
+	"Avaliação",
+	"Colapso",
+	"Acidentes",
+	"Explosão",
+	"Fadiga",
+	"Instalação",
+	"Quebra",
+	"Queda",
+	"Ruptura",
+	"Patente",
+	"PMOC",
+] as const;
+
+const timeline = [
+	{
+		year: "2021",
+		description:
+			"Coordenador da Câmara de Engenharia Mecânica do CREA-SP (CEEMM)",
+	},
+	{
+		year: "2013–2025",
+		description: "Atuação por 12 anos como Conselheiro do CREA-SP",
+	},
+	{
+		year: "2019–2025",
+		description:
+			"Presidente da Associação dos Engenheiros da região de Amparo por 6 anos",
+	},
 ] as const;
 
 export function Hero() {
@@ -34,7 +66,6 @@ export function Hero() {
 			aria-labelledby="hero-title"
 			className="relative pt-8 pb-8 sm:pt-16 sm:pb-10 lg:py-20"
 		>
-
 			<div className="grid gap-10 lg:grid-cols-[1.15fr_1fr] lg:gap-16">
 				<div className="relative z-10 space-y-8 lg:space-y-10">
 					<AnimatedSection delay={0.1}>
@@ -58,7 +89,7 @@ export function Hero() {
 							<span className="bg-gradient-to-r from-primary via-[#008b91] to-[#33b6bb] bg-clip-text text-transparent">
 								engenharia mecânica
 							</span>
-                                          {" "}aplicada à prova técnica.
+							{" "}aplicada à prova técnica
 						</Title>
 					</AnimatedSection>
 
@@ -73,14 +104,67 @@ export function Hero() {
 								animate={{ opacity: 1 }}
 								transition={{ delay: 0.5 }}
 							>
-								35 anos de experiência em análise de falhas, acidentes e eventos
-								críticos. Atuação como Perito Judicial e Assistente Técnico com
-								foco em elevadores e caldeiras.
+								35 anos de experiência em perícia e análise técnica, com atuação em
+								mais de 200 processos como Perito Judicial e Assistente Técnico.
 							</motion.span>
 						</Text>
 					</AnimatedSection>
 
+					<AnimatedSection delay={0.35}>
+						<div className="space-y-3">
+							<Text size="xs" className="font-semibold uppercase tracking-wide text-primary/90">
+								Atuação técnica envolvendo
+							</Text>
+							<div className="flex flex-wrap gap-2">
+								{expertise.map((item) => (
+									<Badge
+										key={item}
+										variant="outline"
+										className="border-border/70 bg-card px-2.5 py-1 text-[11px] sm:text-xs"
+									>
+										{item}
+									</Badge>
+								))}
+							</div>
+							<Text size="xs" tone="muted" className="leading-relaxed">
+								Acompanhamento de ensaios destrutivos e não destrutivos homologados.
+							</Text>
+						</div>
+					</AnimatedSection>
+
 					<AnimatedSection delay={0.4}>
+						<div className="rounded-xl border border-border/70 bg-card/80 p-4 sm:p-5">
+							<div className="mb-4 flex items-center gap-2">
+								<TrendingUp className="size-4 text-primary" />
+								<Title as="h2" size="sm" className="font-heading">
+									Linha do tempo institucional
+								</Title>
+							</div>
+							<div className="relative pl-5 before:absolute before:left-1.5 before:top-1.5 before:h-full before:w-px before:bg-border">
+								<div className="space-y-4">
+									{timeline.map((item, idx) => (
+										<motion.div
+											key={item.year}
+											initial={{ opacity: 0, x: -10 }}
+											animate={isHeroInView ? { opacity: 1, x: 0 } : {}}
+											transition={{ duration: 0.25, delay: 0.5 + idx * 0.1 }}
+											className="relative"
+										>
+											<div className="absolute -left-[1.02rem] top-1 h-2.5 w-2.5 rounded-full bg-primary ring-2 ring-primary/20" />
+											<Text size="xs" className="font-semibold text-primary">
+												{item.year}
+											</Text>
+											<Text size="xs" tone="subtle" className="leading-tight">
+												{item.description}
+											</Text>
+										</motion.div>
+									))}
+								</div>
+							</div>
+						</div>
+					</AnimatedSection>
+
+					<AnimatedSection delay={0.45}>
 						<div className="flex flex-wrap gap-3">
 							<Button
 								asChild
@@ -113,7 +197,7 @@ export function Hero() {
 									key={stat.label}
 									initial={{ opacity: 0 }}
 									animate={isHeroInView ? { opacity: 1 } : {}}
-									transition={{ delay: 0.6 + idx * 0.1, duration: 0.3 }}
+									transition={{ delay: 0.7 + idx * 0.1, duration: 0.3 }}
 									className="space-y-1"
 								>
 									<Text className="text-xl sm:text-2xl lg:text-4xl font-bold bg-gradient-to-br from-foreground to-foreground/70 bg-clip-text text-transparent">
