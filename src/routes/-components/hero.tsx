@@ -23,10 +23,17 @@ const stats = [
 	{ value: "6", label: "Anos na presidência da Associação", suffix: "" },
 ] as const;
 
-const timeline = [
-	{ year: "2013–2025", description: "12 anos como Conselheiro do CREA-SP" },
-	{ year: "2019–2025", description: "6 anos na presidência da Associação de Amparo" },
-	{ year: "2021", description: "Coordenador da Câmara de Eng. Mecânica do CREA-SP" },
+const summaryItems = [
+	"35 anos de experiência",
+	"Perito judicial e assistente técnico",
+	"12 anos como Conselheiro do CREA-SP",
+	"Coordenador da CEEMM do CREA-SP (2021)",
+	"Avaliação e perícia de máquinas e equipamentos",
+	"Elevadores: manutenção, queda e acidentes",
+	"Caldeiras/vasos de pressão: explosão, inspeção e acidentes",
+	"Acidente com veículos: dinâmica do acidente",
+	"Patentes: cópia de patente e modelo de utilidade",
+	"Especialista em postos de combustíveis (SASC)",
 ] as const;
 
 export function Hero() {
@@ -68,32 +75,19 @@ export function Hero() {
 					</AnimatedSection>
 
 					<AnimatedSection delay={0.3}>
-						<div className="max-w-xl space-y-2">
-							<Text size="sm" tone="subtle" className="leading-relaxed sm:text-base">
-								<motion.span
-									initial={{ opacity: 0 }}
-									animate={{ opacity: 1 }}
-									transition={{ delay: 0.5 }}
-								>
-									35 anos de experiência em perícia e análise técnica, com atuação em
-									mais de 200 processos como Perito Judicial e Assistente Técnico.
-								</motion.span>
-							</Text>
-
-							<div className="space-y-1.5 pl-3 border-l border-border/50">
-								{timeline.map((item, idx) => (
+						<div className="max-w-xl rounded-xl border border-border/60 bg-card/70 p-3 sm:p-4">
+							<div className="space-y-1.5">
+								{summaryItems.map((item, idx) => (
 									<motion.div
-										key={item.year}
-										initial={{ opacity: 0, x: -10 }}
-										animate={isHeroInView ? { opacity: 1, x: 0 } : {}}
-										transition={{ duration: 0.25, delay: 0.45 + idx * 0.1 }}
-										className="flex items-baseline gap-2"
+										key={item}
+										initial={{ opacity: 0, y: 6 }}
+										animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
+										transition={{ duration: 0.2, delay: 0.4 + idx * 0.04 }}
+										className="flex items-start gap-2"
 									>
-										<Text size="xs" className="font-semibold text-foreground/80 whitespace-nowrap">
-											{item.year}
-										</Text>
-										<Text size="xs" tone="muted" className="leading-tight whitespace-nowrap">
-											{item.description}
+										<Text size="xs" className="text-primary mt-0.5">•</Text>
+										<Text size="xs" tone="subtle" className="leading-tight">
+											{item}
 										</Text>
 									</motion.div>
 								))}

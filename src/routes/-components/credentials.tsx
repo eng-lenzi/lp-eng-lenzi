@@ -1,4 +1,4 @@
-import { Award, ShieldCheck } from "lucide-react";
+import { Award, ShieldCheck, TrendingUp } from "lucide-react";
 
 import { Text, Title } from "@/components/typography";
 import { Badge } from "@/components/ui/badge";
@@ -11,6 +11,12 @@ const credentials = [
 	"Coordenador da Câmara de Engenharia Mecânica do CREA-SP (2021)",
 	"12 anos como Conselheiro do CREA-SP (CEEMM)",
 	"6 anos como Presidente da Associação dos Engenheiros de Amparo",
+] as const;
+
+const timeline = [
+	{ year: "2013", description: "Início como Conselheiro do CREA-SP (CEEMM)" },
+	{ year: "2019", description: "Eleito Presidente da Associação dos Engenheiros de Amparo" },
+	{ year: "2021", description: "Coordenador da Câmara de Engenharia Mecânica do CREA-SP" },
 ] as const;
 
 export function Credentials() {
@@ -49,6 +55,32 @@ export function Credentials() {
 					</AnimatedCard>
 				))}
 			</div>
+
+			<AnimatedCard delay={0.25}>
+				<div className="mt-6 sm:mt-8 rounded-xl border border-border/70 bg-card/70 p-4 sm:p-5">
+					<div className="mb-3 flex items-center gap-2">
+						<TrendingUp className="size-4 text-primary" />
+						<Title as="h3" size="sm" className="font-heading">
+							Linha do tempo
+						</Title>
+					</div>
+					<div className="relative pl-5 before:absolute before:left-1.5 before:top-1.5 before:h-full before:w-px before:bg-border">
+						<div className="space-y-3">
+							{timeline.map((item) => (
+								<div key={item.year} className="relative">
+									<div className="absolute -left-[1.02rem] top-1 h-2.5 w-2.5 rounded-full bg-primary/70" />
+									<Text size="xs" className="font-semibold text-primary">
+										{item.year}
+									</Text>
+									<Text size="xs" tone="subtle" className="leading-tight">
+										{item.description}
+									</Text>
+								</div>
+							))}
+						</div>
+					</div>
+				</div>
+			</AnimatedCard>
 
 			<AnimatedCard delay={0.3}>
 				<div
